@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>OAuth2TokenGenerator</display-name>
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+
+    <listener>
+        <listener-class>com.xiaoyicloud.payment.web.listener.TestListener</listener-class>
+    </listener>
+
+    <filter>
+        <filter-name>wechat-payment</filter-name>
+        <filter-class>com.xiaoyicloud.payment.weixin.pay.filter.WechatPaymentFilter</filter-class>
+        <init-param>
+            <param-name>openAccountAuthURI</param-name>
+            <param-value>/wechat/testopen/auth</param-value>
+        </init-param>
+        <init-param>
+            <param-name>openAccountAuthResult</param-name>
+            <param-value>/wechat/testopen/authResult</param-value>
+        </init-param>
+        <init-param>
+            <param-name>afterAuthResultURI</param-name>
+            <param-value>/wechat/testopen/order</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>wechat-payment</filter-name>
+        <url-pattern>/wechat/testopen/auth</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>wechat-payment</filter-name>
+        <url-pattern>/wechat/testopen/authResult</url-pattern>
+    </filter-mapping>
+
+    <servlet>
+        <servlet-name>pay-order</servlet-name>
+        <servlet-class>com.xiaoyicloud.payment.web.servlet.WechatPayOrder</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>pay-order</servlet-name>
+        <url-pattern>/wechat/testopen/order</url-pattern>
+    </servlet-mapping>
+
+</web-app>
