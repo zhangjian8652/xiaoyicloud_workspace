@@ -4,10 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.xiaoyicloud.payment</groupId>
+    <parent>
+        <groupId>com.joker.module.parent</groupId>
+        <artifactId>aggregator</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <groupId>com.joker.module.payment</groupId>
     <artifactId>wechat-payment</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
+
     <build>
         <plugins>
             <plugin>
@@ -21,20 +28,19 @@
         </plugins>
     </build>
 
-    <parent>
-        <groupId>com.test.payment.parent</groupId>
-        <artifactId>aggregator</artifactId>
-        <version>1.0.0</version>
-    </parent>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <httpcomponents.version>4.2.2</httpcomponents.version>
         <jackson.version>2.4.4</jackson.version>
         <developer.organization><![CDATA[xyc公司]]></developer.organization>
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.joker.module.httpclient</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -46,24 +52,6 @@
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
             <version>2.0.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpcomponents.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <version>${httpcomponents.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-httpclient</groupId>
-            <artifactId>commons-httpclient</artifactId>
-            <version>3.1</version>
         </dependency>
 
         <!-- the core, which includes Streaming API, shared low-level abstractions (but NOT data-binding) -->

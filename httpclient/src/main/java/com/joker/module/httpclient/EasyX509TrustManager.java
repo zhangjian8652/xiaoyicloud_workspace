@@ -3,7 +3,7 @@
 // (powered by Fernflower decompiler)
 //
 
-package com.xiaoyicloud.payment.httpclient.httpclient;
+package com.joker.module.httpclient;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

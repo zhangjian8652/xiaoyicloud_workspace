@@ -1,6 +1,6 @@
-package com.xiaoyicloud.payment.httpclient.httpclient;
+package com.joker.module.httpclient;
 
-import com.xiaoyicloud.payment.httpclient.httpclient.domain.Response;
+import com.joker.module.httpclient.domain.Response;
 import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpMethod;

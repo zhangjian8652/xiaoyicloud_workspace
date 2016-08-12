@@ -1,4 +1,4 @@
-package com.xiaoyicloud.payment.httpclient.httpclient;/*
+package com.joker.module.httpclient;/*
  * $HeadURL$
  * $Revision$
  * $Date$

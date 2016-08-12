@@ -1,6 +1,6 @@
 package com.xiaoyicloud.payment.weixin.pay.http;
 
-import com.xiaoyicloud.payment.httpclient.httpclient.HttpRequest;
+import com.joker.module.httpclient.HttpRequest;
 import org.apache.commons.httpclient.Header;
 
 /**

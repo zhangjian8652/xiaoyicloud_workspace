@@ -1,4 +1,4 @@
-package com.xiaoyicloud.payment.httpclient.httpclient.domain;
+package com.joker.module.httpclient.domain;
 
 import org.apache.commons.httpclient.Header;
 

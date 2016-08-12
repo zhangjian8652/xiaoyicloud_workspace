@@ -31,8 +31,24 @@
         <processorPath useClasspath="true" />
         <module name="test-web" />
       </profile>
+      <profile default="false" name="Annotation profile for paypal-payment" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="paypal-payment" />
+      </profile>
+      <profile default="false" name="Annotation profile for httpclient" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="httpclient" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="httpclient" target="1.5" />
+      <module name="paypal-payment" target="1.6" />
       <module name="test-web" target="1.5" />
       <module name="wechat-payment" target="1.6" />
       <module name="xiaoyicloud_workspace" target="1.5" />

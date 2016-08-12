@@ -3,7 +3,7 @@ package com.xiaoyicloud.payment.weixin.pay.service.impl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import com.xiaoyicloud.payment.httpclient.httpclient.domain.Response;
+import com.joker.module.httpclient.domain.Response;
 import com.xiaoyicloud.payment.weixin.pay.config.WechatPaymentConfig;
 import com.xiaoyicloud.payment.weixin.pay.domain.WechatOrder;
 import com.xiaoyicloud.payment.weixin.pay.domain.WechatPrePayOrder;

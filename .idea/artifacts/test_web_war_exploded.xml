@@ -7,9 +7,7 @@
           <element id="module-output" name="test-web" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="wechat-payment-1.0.0.jar">
-            <element id="module-output" name="wechat-payment" />
-          </element>
+          <element id="library" level="project" name="Maven: com.xiaoyicloud.payment:wechat-payment:1.0.0" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.0.2" />
           <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.0.2" />
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.2.2" />

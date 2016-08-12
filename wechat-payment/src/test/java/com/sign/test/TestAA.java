@@ -12,6 +12,11 @@ public class TestAA {
 
     @Test
     public void testLog4jEncoding() {
-        logger.debug("你好");
+        logger.debug("log4j编码");
+    }
+
+    @Test
+    public void testEncoding(){
+        System.out.println("系统编码");
     }
 }
