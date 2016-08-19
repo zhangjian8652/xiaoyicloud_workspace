@@ -1,14 +1,14 @@
 package com.xiaoyicloud.payment.web.servlet;
 
 
-import com.xiaoyicloud.payment.weixin.pay.config.WechatPaymentConfig;
-import com.xiaoyicloud.payment.weixin.pay.domain.WechatPrePayOrder;
-import com.xiaoyicloud.payment.weixin.pay.domain.WechatUserAuth;
-import com.xiaoyicloud.payment.weixin.pay.exception.WechatServiceException;
-import com.xiaoyicloud.payment.weixin.pay.service.WechatPaymentService;
-import com.xiaoyicloud.payment.weixin.pay.service.impl.WechatPaymentServiceImpl;
-import com.xiaoyicloud.payment.weixin.pay.util.CommonUtil;
-import com.xiaoyicloud.payment.weixin.pay.util.WechatPaymentUtil;
+import com.joker.module.payment.wechat.config.WechatPaymentConfig;
+import com.joker.module.payment.wechat.domain.WechatPrePayOrder;
+import com.joker.module.payment.wechat.domain.WechatUserAuth;
+import com.joker.module.payment.wechat.exception.WechatServiceException;
+import com.joker.module.payment.wechat.service.WechatPaymentService;
+import com.joker.module.payment.wechat.service.impl.WechatPaymentServiceImpl;
+import com.joker.module.payment.wechat.util.CommonUtil;
+import com.joker.module.payment.wechat.util.WechatPaymentUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,7 +29,6 @@ public class WechatPayOrder extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
         WechatUserAuth wechatUserAuth = (WechatUserAuth) req.getSession().getAttribute(WechatPaymentConfig.WECHAT_USER_AUTH_SESSION_KEY);
 
         if (wechatUserAuth == null) {
@@ -41,6 +40,7 @@ public class WechatPayOrder extends HttpServlet {
 
         try {
             prePayOrder = wechatPaymentService.generateOpenPrePayOrder(1, "商品购买", WechatPaymentUtil.generateOuteTradeNo("XY"), wechatUserAuth.getOpenid(), "http://zhangjian.iok.la/wechat/payment/test/open/payresult", CommonUtil.getIpAddr(req));
+            wechatPaymentService.generateURLPrePayOrder(1, "商品购买", "productId", "2016081211", "http://zhangjian.iok.la/wechat/payment/test/open/payresult", CommonUtil.getIpAddr(req));
         } catch (WechatServiceException e) {
             e.printStackTrace();
         }

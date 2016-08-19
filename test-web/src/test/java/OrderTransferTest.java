@@ -1,12 +1,13 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.xiaoyicloud.payment.weixin.pay.domain.WechatUserAuth;
+import com.joker.module.payment.wechat.domain.WechatUserAuth;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Properties;
 
 /**
  * Created by zhangjian on 2016/8/10.
@@ -32,4 +33,13 @@ public class OrderTransferTest {
         String a = "忙聰炉盲禄聵氓驴聟茅隆禄盲录聽";
         logger.debug(a);
     }
+
+
+    @Test
+    public void testResourcesRead() throws IOException {
+        Properties properties = new Properties();
+        properties.load(this.getClass().getClassLoader().getResourceAsStream("wechat_payment.properties"));
+    }
+
+
 }

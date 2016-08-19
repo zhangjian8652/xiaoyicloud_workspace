@@ -10,10 +10,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>test-web</module>
-        <module>wechat-payment</module>
-        <module>paypal-payment</module>
         <module>httpclient</module>
+        <module>wechat-payment</module>
     </modules>
 
 
@@ -26,7 +24,7 @@
         </dependency>
     </dependencies>
 
-    <distributionManagement>
+<!--    <distributionManagement>
         <repository>
             <id>nexus-releases</id>
             <name>releases</name>
@@ -37,7 +35,10 @@
             <name>snapshot</name>
             <url>http://192.168.2.150:8081/nexus/content/repositories/snapshot/</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
+
+
+
 
     <build>
         <finalName>${artifactId}-${version}</finalName>

@@ -47,6 +47,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="common_workspace" target="1.5" />
       <module name="httpclient" target="1.5" />
       <module name="paypal-payment" target="1.6" />
       <module name="test-web" target="1.5" />
