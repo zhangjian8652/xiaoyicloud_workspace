@@ -40,7 +40,7 @@ public class WechatPayOrder extends HttpServlet {
 
         try {
             prePayOrder = wechatPaymentService.generateOpenPrePayOrder(1, "商品购买", WechatPaymentUtil.generateOuteTradeNo("XY"), wechatUserAuth.getOpenid(), "http://zhangjian.iok.la/wechat/payment/test/open/payresult", CommonUtil.getIpAddr(req));
-            wechatPaymentService.generateURLPrePayOrder(1, "商品购买", "productId", "2016081211", "http://zhangjian.iok.la/wechat/payment/test/open/payresult", CommonUtil.getIpAddr(req));
+            //wechatPaymentService.generateURLPrePayOrder(1, "商品购买", "productId", "2016081211", "http://zhangjian.iok.la/wechat/payment/test/open/payresult", CommonUtil.getIpAddr(req));
         } catch (WechatServiceException e) {
             e.printStackTrace();
         }

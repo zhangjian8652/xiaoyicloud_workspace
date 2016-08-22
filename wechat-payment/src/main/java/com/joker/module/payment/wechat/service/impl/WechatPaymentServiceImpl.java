@@ -190,6 +190,11 @@ public class WechatPaymentServiceImpl implements WechatPaymentService {
 
         boolean result = WechatPaymentUtil.checkNotifyUrlSign(wechatPayResult,WechatPaymentConfig.KEY);
 
+
+        if(!WechatPaymentConfig.APPID.equals(wechatPayResult.getAppid())){
+            throw new WechatServiceException("APPID 对应不上，可能是伪装数据");
+        }
+
         if(result){
             return  wechatPayResult;
         }
