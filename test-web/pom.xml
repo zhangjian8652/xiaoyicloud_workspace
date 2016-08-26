@@ -7,6 +7,18 @@
     <groupId>com.joker.module</groupId>
     <artifactId>test-web</artifactId>
     <version>1.0.0</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <parent>
         <groupId>com.joker.module.parent</groupId>
         <artifactId>aggregator</artifactId>
@@ -38,7 +50,7 @@
         <dependency>
             <groupId>com.joker.module.payment</groupId>
             <artifactId>wechat-payment</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.5</version>
         </dependency>
 
     </dependencies>

@@ -7,10 +7,10 @@
           <element id="module-output" name="test-web" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="wechat-payment-1.0.0.jar">
+          <element id="archive" name="wechat-payment-1.0.5.jar">
             <element id="module-output" name="wechat-payment" />
           </element>
-          <element id="archive" name="httpclient-1.0.0.jar">
+          <element id="archive" name="httpclient-1.0.1.jar">
             <element id="module-output" name="httpclient" />
           </element>
           <element id="library" level="project" name="Maven: org.apache.httpcomponents:httpclient:4.2.2" />

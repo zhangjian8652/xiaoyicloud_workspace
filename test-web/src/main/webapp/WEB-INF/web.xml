@@ -30,6 +30,10 @@
             <param-name>afterAuthResultURI</param-name>
             <param-value>/wechat/testopen/order</param-value>
         </init-param>
+        <init-param>
+            <param-name>domain</param-name>
+            <param-value>xxx.xxx.xxx</param-value>
+        </init-param>
     </filter>
 
     <filter-mapping>

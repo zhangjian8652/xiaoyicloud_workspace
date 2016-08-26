@@ -22,6 +22,7 @@ public class WechatPaymentFilter implements Filter {
     private String openAccountAuthURI ;
     private String openAccountAuthResult;
     private String afterAuthURI;
+    private String host;
 
     private static final WechatPaymentService wechatPaymentService = new WechatPaymentServiceImpl();
 
@@ -30,6 +31,7 @@ public class WechatPaymentFilter implements Filter {
         this.openAccountAuthURI = filterConfig.getInitParameter("openAccountAuthURI");
         this.openAccountAuthResult = filterConfig.getInitParameter("openAccountAuthResult");
         this.afterAuthURI = filterConfig.getInitParameter("afterAuthResultURI");
+        this.host = filterConfig.getInitParameter("host");
     }
 
     @Override
@@ -37,7 +39,7 @@ public class WechatPaymentFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse resp = (HttpServletResponse) response;
         String requestURI = req.getRequestURI();
-        String webPath = "http://"+ request.getServerName() + req.getContextPath();
+        String webPath = this.host + req.getContextPath();
         webPath = webPath.substring(0,webPath.length());
 
         if (requestURI.equals(this.openAccountAuthURI)) {
