@@ -74,4 +74,12 @@ public class Response<T> {
     public void setHeaders(Header[] headers) {
         this.headers = headers;
     }
+
+    public List<T> getDatas() {
+        return datas;
+    }
+
+    public T getT() {
+        return t;
+    }
 }

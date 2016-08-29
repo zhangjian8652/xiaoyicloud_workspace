@@ -5,21 +5,22 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.joker.module.httpclient.domain.Response;
 import com.joker.module.payment.wechat.config.WechatPaymentConfig;
-import com.joker.module.payment.wechat.domain.WechatOrder;
-import com.joker.module.payment.wechat.domain.WechatPayResult;
-import com.joker.module.payment.wechat.domain.WechatPrePayOrder;
-import com.joker.module.payment.wechat.domain.WechatUserAuth;
+import com.joker.module.payment.wechat.domain.*;
+import com.joker.module.payment.wechat.exception.LongURLException;
 import com.joker.module.payment.wechat.exception.WechatOrderException;
 import com.joker.module.payment.wechat.exception.WechatServiceException;
 import com.joker.module.payment.wechat.http.WechatPaymentHttpClient;
 import com.joker.module.payment.wechat.service.WechatPaymentService;
 import com.joker.module.payment.wechat.util.CommonUtil;
 import com.joker.module.payment.wechat.util.WechatPaymentUtil;
+import com.joker.module.qrcode.util.QrcodeUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.xml.ws.WebServiceException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -199,6 +200,106 @@ public class WechatPaymentServiceImpl implements WechatPaymentService {
             return  wechatPayResult;
         }
          throw new WechatServiceException("签名有问题，可能是非法通知。");
+    }
+
+    @Override
+    public String transferLong2ShortURL(String longURL) throws WechatServiceException {
+
+        if(longURL == null || "".equals(longURL)){
+            throw  new WechatServiceException("长连接为空，请仔细检查参数");
+        }
+
+        LongURL longURL1 = new LongURL();
+        longURL1.setAppid(WechatPaymentConfig.APPID);
+        longURL1.setMchId(WechatPaymentConfig.MCH_ID);
+        longURL1.setNonceStr(UUID.randomUUID().toString().replaceAll("-",""));
+        longURL1.setLongUrl(longURL);
+
+        Response response = null;
+        try {
+            String xmlParams = WechatPaymentUtil.generateSortedXMLFromLongURL(longURL1);
+            WechatPaymentHttpClient client = new WechatPaymentHttpClient(WechatPaymentHttpClient.ORDER_ADDRESS);
+            response = client.post(WechatPaymentHttpClient.LONG_TO_SHORT_URI, xmlParams);
+
+        } catch (LongURLException e) {
+            e.printStackTrace();
+            throw new WechatServiceException("转换参数为xml失败");
+        }
+
+        if(!response.isSuccess()){
+            throw new WechatServiceException("访问微信接口转换链接失败，检查网络或者参数是否正确");
+        }
+
+        XmlMapper mapper = new XmlMapper();
+        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.CAMEL_CASE_TO_LOWER_CASE_WITH_UNDERSCORES);
+
+        ShortURL shortURL = null;
+        try {
+            shortURL = mapper.readValue(response.getString(),ShortURL.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new WechatServiceException("解析微信返回结果数据失败，检查字段映射是否正确");
+        }
+
+        if(shortURL == null || !shortURL.isSuccess()){
+            throw new WechatServiceException("解析微信返回结果数据失败，检查调用微信接口参数。");
+        }
+
+
+
+        return shortURL.getShortUrl();
+    }
+
+    @Override
+    public void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream outputStream) throws WechatServiceException {
+        WechatPrePayOrder wechatPrePayOrder = generateURLPrePayOrder(mount,tittle,productId,outTradeNo,notifyUrl,ip);
+       // String shortURL = transferLong2ShortURL(wechatPrePayOrder.getCodeUrl());
+
+        try {
+            QrcodeUtils.gen(wechatPrePayOrder.getCodeUrl(),outputStream);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new WechatServiceException("生成二维码失败");
+        }
+    }
+
+    @Override
+    public void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream qrCodeOutPut, InputStream logoInput) throws WechatServiceException {
+        WechatPrePayOrder wechatPrePayOrder = generateURLPrePayOrder(mount,tittle,productId,outTradeNo,notifyUrl,ip);
+        // String shortURL = transferLong2ShortURL(wechatPrePayOrder.getCodeUrl());
+
+        try {
+            QrcodeUtils.gen(wechatPrePayOrder.getCodeUrl(),qrCodeOutPut,logoInput);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new WechatServiceException("生成二维码失败");
+        }
+    }
+
+    @Override
+    public void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream outputStream, int width, int height) throws WechatServiceException {
+        WechatPrePayOrder wechatPrePayOrder = generateURLPrePayOrder(mount,tittle,productId,outTradeNo,notifyUrl,ip);
+       // String shortURL = transferLong2ShortURL(wechatPrePayOrder.getCodeUrl());
+
+        try {
+            QrcodeUtils.gen(wechatPrePayOrder.getCodeUrl(),outputStream,width,height);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new WechatServiceException("生成二维码失败");
+        }
+    }
+
+    @Override
+    public void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream qrCodeOutPut, InputStream logoInput, int width, int height) throws WechatServiceException {
+        WechatPrePayOrder wechatPrePayOrder = generateURLPrePayOrder(mount,tittle,productId,outTradeNo,notifyUrl,ip);
+        // String shortURL = transferLong2ShortURL(wechatPrePayOrder.getCodeUrl());
+
+        try {
+            QrcodeUtils.gen(wechatPrePayOrder.getCodeUrl(),qrCodeOutPut,logoInput,width,height);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new WechatServiceException("生成二维码失败");
+        }
     }
 
     private String getOrderParamsXMLString(WechatOrder wechatOrder, String xmlParams) throws WechatServiceException {

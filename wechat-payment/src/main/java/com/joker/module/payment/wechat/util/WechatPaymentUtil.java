@@ -5,9 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.joker.module.payment.wechat.config.WechatPaymentConfig;
+import com.joker.module.payment.wechat.domain.LongURL;
 import com.joker.module.payment.wechat.domain.WechatOrder;
 import com.joker.module.payment.wechat.domain.WechatPayResult;
 import com.joker.module.payment.wechat.domain.WechatPrePayOrder;
+import com.joker.module.payment.wechat.exception.LongURLException;
 import com.joker.module.payment.wechat.exception.WechatOrderException;
 
 import java.io.IOException;
@@ -331,6 +333,41 @@ public class WechatPaymentUtil {
         params.put("trade_type", wechatPayResult.getTradeType());
         params.put("transaction_id", wechatPayResult.getTransactionId());
         return checkSign(params,wechatPayResult.getSign(),key);
+    }
+
+    
+    public static String generateSortedXMLFromLongURL(LongURL longURL1) throws LongURLException {
+        checkLongURLRequiredParams(longURL1);
+        SortedMap<Object, Object> parameters = new TreeMap<Object, Object>();
+        addLongURLParamsToSortedMap(longURL1, parameters);
+        String mySign = createSign(CHARACTER_ENCODING_UTF8, parameters, WechatPaymentConfig.KEY);
+        parameters.put("sign", mySign);
+        return CommonUtil.converterMapToXml(parameters);
+    }
+
+    private static void addLongURLParamsToSortedMap(LongURL longURL1, SortedMap<Object, Object> parameters) {
+        parameters.put("appid",longURL1.getAppid());
+        parameters.put("mch_id",longURL1.getMchId());
+        parameters.put("long_url",longURL1.getLongUrl());
+        parameters.put("nonce_str",longURL1.getNonceStr());
+    }
+
+    private static void checkLongURLRequiredParams(LongURL longURL1) throws LongURLException {
+        if(longURL1.getAppid() == null){
+            throw  new LongURLException("appid 必填参数");
+        }
+
+        if(longURL1.getMchId() == null){
+            throw new LongURLException("mch_id 必填参数");
+        }
+
+        if(longURL1.getLongUrl() == null){
+            throw new LongURLException("long_url 必填参数 ");
+        }
+
+        if(longURL1.getNonceStr() == null){
+            throw new LongURLException("nonce_str 必填参数 ");
+        }
     }
 
 }

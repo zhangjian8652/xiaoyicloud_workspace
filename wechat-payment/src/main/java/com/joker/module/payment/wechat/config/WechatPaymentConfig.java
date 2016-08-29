@@ -13,6 +13,8 @@ public class WechatPaymentConfig {
     public static String SECRET;
     public static String WECHAT_USER_AUTH_SESSION_KEY = "wechatUserAuth";
 
+    public static String WECHAT_QR_LOGO_NAME = "logo.jpg";
+
     static {
         Properties properties = new Properties();
         try {

@@ -5,6 +5,9 @@ import com.joker.module.payment.wechat.domain.WechatUserAuth;
 import com.joker.module.payment.wechat.exception.WechatServiceException;
 import com.joker.module.payment.wechat.domain.WechatPrePayOrder;
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
 /**
  * Created by zhangjian on 2016/8/9.
  */
@@ -59,4 +62,74 @@ public interface WechatPaymentService {
      * @throws WechatServiceException
      */
     WechatPayResult parseNotifyXMLData(String xmlData) throws WechatServiceException;
+
+    /**
+     * 将微信扫码长连接转换为短连接
+     * @param longURL 需要转换的长链接
+     * @return 短连接
+     */
+    String transferLong2ShortURL(String longURL) throws WechatServiceException;
+
+    /**
+     *
+     * 生成预支付订单 链接形式，用于二维码支付
+     * @param mount 总金额，单位为分 列入1元 等于 100分
+     * @param tittle 订单的描述信息，比如商品购买或者商品充值
+     * @param productId 此id为二维码中包含的商品ID，商户自行定义。
+     * @param outTradeNo 订单号：20160808174447（32个字符内，可包含字母）
+     * @param notifyUrl 交易成功异步通知接口
+     * @param ip 微信客户端ip
+     * @param outputStream 二维码输出流
+     * @return 返回创建预支付订单结果
+     */
+    void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream outputStream) throws WechatServiceException;
+
+    /**
+     *
+     * 生成预支付订单 链接形式，用于二维码支付
+     * @param mount 总金额，单位为分 列入1元 等于 100分
+     * @param tittle 订单的描述信息，比如商品购买或者商品充值
+     * @param productId 此id为二维码中包含的商品ID，商户自行定义。
+     * @param outTradeNo 订单号：20160808174447（32个字符内，可包含字母）
+     * @param notifyUrl 交易成功异步通知接口
+     * @param ip 微信客户端ip
+     * @param qrCodeOutPut 二维码输出流
+     * @param logoInput 二维码logo输入流
+     * @return 返回创建预支付订单结果
+     */
+    void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream qrCodeOutPut,InputStream logoInput) throws WechatServiceException;
+
+
+    /**
+     *
+     * 生成预支付订单 链接形式，用于二维码支付
+     * @param mount 总金额，单位为分 列入1元 等于 100分
+     * @param tittle 订单的描述信息，比如商品购买或者商品充值
+     * @param productId 此id为二维码中包含的商品ID，商户自行定义。
+     * @param outTradeNo 订单号：20160808174447（32个字符内，可包含字母）
+     * @param notifyUrl 交易成功异步通知接口
+     * @param ip 微信客户端ip
+     * @param qrCodeOutPut 二维码输出流
+     * @param width 二维码宽
+     * @param height 二维码高
+     * @return 返回创建预支付订单结果
+     */
+    void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream qrCodeOutPut,int width,int height) throws WechatServiceException;
+
+    /**
+     *
+     * 生成预支付订单 链接形式，用于二维码支付
+     * @param mount 总金额，单位为分 列入1元 等于 100分
+     * @param tittle 订单的描述信息，比如商品购买或者商品充值
+     * @param productId 此id为二维码中包含的商品ID，商户自行定义。
+     * @param outTradeNo 订单号：20160808174447（32个字符内，可包含字母）
+     * @param notifyUrl 交易成功异步通知接口
+     * @param ip 微信客户端ip
+     * @param qrCodeOutPut 二维码输出流
+     * @param logoInput 二维码中间logo
+     * @param width 二维码宽
+     * @param height 二维码高
+     * @return 返回创建预支付订单结果
+     */
+    void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream qrCodeOutPut,InputStream logoInput,int width,int height) throws WechatServiceException;
 }

@@ -29,7 +29,7 @@ public class OptionalTest {
         System.out.println(empty.get());
 
         //输出：Sanaulla
-        System.out.println(empty.orElseGet(() -> "Default Value"));
+        //System.out.println(empty.orElseGet(() -> "Default Value"));
 
     }
 }

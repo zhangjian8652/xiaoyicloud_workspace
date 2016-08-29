@@ -13,6 +13,7 @@ public class WechatPaymentHttpClient extends HttpRequest {
     public static String ORDER_ADDRESS = "api.mch.weixin.qq.com";
     public static String CREATE_ORDER_URI = "/pay/unifiedorder";
     public static String REFUND_ORDER_URI = "/secapi/pay/refund";
+    public static String LONG_TO_SHORT_URI = "/tools/shorturl";
 
     public static String ACCESS_TOKEN_ADDRESS = "api.weixin.qq.com";
     public static String ACCESS_TOKEN_URI = "/sns/oauth2/access_token";

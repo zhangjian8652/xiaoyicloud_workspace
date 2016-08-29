@@ -1,15 +1,10 @@
 package lambda;
 
-import org.junit.Test;
-
-import java.io.File;
-import java.io.FileFilter;
-import java.util.Arrays;
-
 /**
  * Created by zhangjian on 2016/8/24.
  */
 public class LambdaTest {
+/*
 
     @Test
     public void test1(){
@@ -26,6 +21,7 @@ public class LambdaTest {
 
         FileFilter java = (File f) -> f.getName().endsWith("*.java");
     }
+*/
 
 
 }

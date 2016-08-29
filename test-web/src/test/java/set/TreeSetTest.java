@@ -29,7 +29,7 @@ public class TreeSetTest {
     @Test
     public void test2() {
         long start = System.currentTimeMillis();
-        List<Integer> n1 = new ArrayList<>();
+        List<Integer> n1 = new ArrayList<Integer>();
         n1.add(1);
         n1.add(2);
         n1.add(3);
@@ -43,7 +43,7 @@ public class TreeSetTest {
 
         start = System.currentTimeMillis();
 
-        List<Integer> ln = new LinkedList<>();
+        List<Integer> ln = new LinkedList<Integer>();
         ln.add(1);
         ln.add(2);
         ln.add(3);
@@ -56,7 +56,7 @@ public class TreeSetTest {
         end = System.currentTimeMillis();
         System.out.println(end - start);
 
-        Map<String,Object> aa = new HashMap<>();
+        Map<String,Object> aa = new HashMap<String,Object>();
         aa.put("a","b");
         Set<Map.Entry<String, Object>> cc = aa.entrySet();
 
