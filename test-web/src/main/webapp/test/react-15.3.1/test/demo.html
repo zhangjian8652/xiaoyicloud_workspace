@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="content">
+
+</div>
+
+<div id="content1">
+
+</div>
+<div id="content2">
+
+</div>
+<div id="content3">
+
+</div>
+
+<div id="content4">
+
+</div>
+<div id="content5">
+
+</div>
+
+<script src="../build/react.js"></script>
+<script src="../build/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.min.js"></script>
+<script type="text/babel">
+
+    // tutorial1.js
+    var Comment = React.createClass({
+        propTypes:{
+            author:React.PropTypes.string.isRequired
+        },
+        render: function() {
+            return (
+                    <div className="comment">
+                        Hello, world! I am a Comment.{this.props.author}
+            </div>
+            );
+        },
+        getDefaultProps:function(){
+
+        }
+    });
+
+    // tutorial2.js
+    var CommentList = React.createClass({
+        render: function () {
+
+
+            var nodes = this.props.data.map(function(person){
+                return (
+                        <p>{person.id} {person.name} {person.age}</p>
+                )
+            })
+
+            return (
+                    <div className="commentList" >
+                    <Comment author="Pete Hunt"/>
+                    <Comment author="Jordan Walke"/>
+                    <Comment author="Jordan Walke"/>
+                    {nodes}
+                    </div>
+            );
+        }
+    });
+
+    var CommentForm = React.createClass({
+        render: function () {
+
+            return (
+                    <div className="commentForm">
+                        Hello, world! I am a CommentForm. {this.props.author}
+                    </div>
+            );
+        }
+    });
+
+
+    var data = [
+        {"id":"xxxaaa","name":"joy","age":30},
+        {"id":"dsfg","name":"toy","age":20},
+        {"id":"sdfggs","name":"hoy","age":30},
+    ];
+
+    // tutorial3.js
+    var CommentBox = React.createClass({
+        render: function () {
+            return (
+                    <div className="commentBox">
+                        <Comment/>
+                        <CommentList data={data}/>
+                        <CommentForm author="sefarega"/>
+                    </div>
+            );
+        }
+    });
+
+
+    ReactDOM.render(<CommentBox/>, document.getElementById("content"));
+    ReactDOM.render(<CommentBox/>, document.getElementById("content1"));
+
+
+    class LikeButton extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                liked: false
+            };
+            this.handleClick = this.handleClick.bind(this);
+        }
+        handleClick() {
+            this.setState({liked: !this.state.liked});
+        }
+        render() {
+            const text = this.state.liked ? 'liked' : 'haven\'t liked';
+            return (
+                    <div onClick={this.handleClick}>
+            You {text} this. Click to toggle.
+            </div>
+        );
+        }
+    }
+
+    ReactDOM.render(
+    <LikeButton />,
+            document.getElementById('content2')
+    );
+
+
+
+    var CheckLink = React.createClass({
+        render: function() {
+            // This takes any props passed to CheckLink and copies them to <a>
+            return <a {...this.props}>{'√ '}{this.props.children}</a>;
+        }
+    });
+
+    ReactDOM.render(
+    <CheckLink href="/checked.html">
+            Click here!
+    </CheckLink>,
+            document.getElementById('content3')
+    );
+
+
+
+
+    var SetIntervalMixin = {
+        componentWillMount: function() {
+            this.intervals = [];
+        },
+        setInterval: function() {
+            this.intervals.push(setInterval.apply(null, arguments));
+        },
+        setXXX: function() {
+            this.intervals.push(setInterval.apply(null, arguments));
+        },
+        componentWillUnmount: function() {
+            this.intervals.forEach(clearInterval);
+        }
+    };
+
+    var TickTock = React.createClass({
+        mixins: [SetIntervalMixin], // Use the mixin
+        getInitialState: function() {
+            return {seconds: 0};
+        },
+        componentDidMount: function() {
+            this.setInterval(this.tick, 1000); // Call a method on the mixin
+            this.setXXX(this.print, 1000);
+        },
+        tick: function() {
+            this.setState({seconds: this.state.seconds + 1});
+        },
+        print:function(){
+            console.log(this);
+        }
+        ,
+        render: function() {
+            return (
+                    <p>
+                    React has been running for {this.state.seconds} seconds.
+            </p>
+            );
+        }
+    });
+
+    ReactDOM.render(
+    <TickTock />,
+            document.getElementById('content4')
+    );
+
+
+
+    var AMixin = {
+        componentWillMount: function () {
+            console.log('AMixin Will Mount');
+        }
+    };
+
+    var BMixin = {
+        componentWillMount: function () {
+            console.log('BMixin Will Mount');
+        }
+    };
+
+    var BComponent = React.createClass({
+        mixins: [AMixin,BMixin],
+        componentWillMount: function () {
+            console.log('Component will mount');
+        },
+        componentDidMount: function () {
+            console.log('Component did mount');
+        },
+        render: function () {
+            return (
+                    <div>BComponent</div>
+            )
+        }
+    });
+
+
+    ReactDOM.render(<BComponent/>, document.getElementById("content5"))
+</script>
+</body>
+</html>

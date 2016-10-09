@@ -112,7 +112,7 @@ public interface WechatPaymentService {
      * @param qrCodeOutPut 二维码输出流
      * @param width 二维码宽
      * @param height 二维码高
-     * @return 返回创建预支付订单结果
+     * @return
      */
     void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream qrCodeOutPut,int width,int height) throws WechatServiceException;
 
@@ -129,7 +129,7 @@ public interface WechatPaymentService {
      * @param logoInput 二维码中间logo
      * @param width 二维码宽
      * @param height 二维码高
-     * @return 返回创建预支付订单结果
+     * @return
      */
     void generateQRCodePrePayOrder(int mount, String tittle, String productId, String outTradeNo, String notifyUrl, String ip, OutputStream qrCodeOutPut,InputStream logoInput,int width,int height) throws WechatServiceException;
 }

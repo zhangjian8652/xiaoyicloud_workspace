@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.modules.management.dao.ManagementUserDao">
+    <resultMap type="managementUser" id="MGUser">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="sex" column="sex" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+        <result property="email" column="email" />
+        <result property="mobile" column="mobile" />
+        <result property="index" column="rownum" />
+        <association property="avatar" column="photo_id" select="com.joker.modules.management.dao.AvatarDao.findAvatarById" />
+    </resultMap>
+
+    <sql id="user_colums">
+        u.id,u.username,u.password,u.sex,u.email,u.mobile,u.create_on,u.update_on,u.photo_id
+    </sql>
+
+    <!-- 查找所有用户 -->
+    <select id="selectAll" resultMap="MGUser">
+        SELECT
+            <include refid="user_colums"/>
+            ,(@rownum:=@rownum+1) as rownum
+          <!--  <include refid="picture_colums"/>-->
+        FROM
+          rms_user u
+        ,(SELECT @rownum:=0) b
+    </select>
+
+    <select id="selectByLike" resultMap="MGUser" parameterType="java.lang.String">
+        SELECT
+        <include refid="user_colums"/>
+        ,(@rownum:=@rownum+1) as rownum
+        FROM
+        rms_user u
+        ,(SELECT @rownum:=0) b
+        <if test="key != null and key != ''">
+        WHERE u.username LIKE CONCAT('%',#{key},'%')
+        OR u.sex LIKE CONCAT('%',#{key},'%')
+        OR u.email LIKE CONCAT('%',#{key},'%')
+        OR u.mobile LIKE CONCAT('%',#{key},'%')
+        </if>
+    </select>
+
+    <!-- 更具id查找用户 -->
+    <select id="selectById" resultMap="MGUser" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="user_colums"/>
+        FROM
+        rms_user u
+        WHERE
+          u.id = #{id}
+    </select>
+
+    <!-- 根据用户名查找用户 -->
+    <select id="selectByUsername" resultMap="MGUser" parameterType="java.lang.String">
+        SELECT
+        <include refid="user_colums"/>
+        FROM
+        rms_user u
+        WHERE
+        u.username = #{username}
+    </select>
+
+    <insert id="add" parameterType="managementUser" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO
+            rms_user(name,password,sex,email,mobile,photo_id,create_on)
+        VALUES
+           ( #{name},#{password},#{sex,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},#{email},#{mobile},#{avator.id},now()))
+        ]]>
+    </insert>
+
+    <update id="update" parameterType="managementUser">
+        <![CDATA[
+        UPDATE
+            rms_user
+        SET
+            name = #{name},
+            password=#{password},
+            sex=#{sex,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},
+            email=#{email},
+            mobile=#{mobile},
+            update_date=now(),
+            photo_id=#{avator.id}
+        ]]>
+    </update>
+
+</mapper>

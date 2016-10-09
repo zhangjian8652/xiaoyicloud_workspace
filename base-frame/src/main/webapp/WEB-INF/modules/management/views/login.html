@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+	<!--<link href="../../resources/plugins/semantic/semantic.min.css">
+	<script src="../../resources/plugins/jquery/jquery-2.1.4.min.js"></script>-->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+
+	<link href="${path!}/plugins/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="${path!}/resources/management/css/login.css" rel="stylesheet">
+    <title>管理登陆页面 | Vivian用户中心</title>
+</head>
+<body>
+		<div class="container-fluid">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-md-offset-6 col-lg-offset-6 login-area">
+						<form class="form-horizontal login-form" method="post" action="${path!}/admin/login">
+							<div class="form-group form-group-lg has-error">
+								<p class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">${message!''}</p>
+							</div>
+							<div class="form-group form-group-lg has-feedback">
+								<label for="username" class="col-xs-12 col-sm-2 col-md-4 col-lg-4 control-label">用户名：</label>
+								<div class="col-xs-12 col-sm-10 col-md-8 col-lg-8 ">
+									<input type="text" class="form-control large" id="username" placeholder="用户名" name="username" maxlength="20">
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+								</div>
+							</div>
+							<div class="form-group form-group-lg has-feedback">
+								<label for="password" class="col-xs-12 col-sm-2 col-md-4 col-lg-4 control-label">密码：</label>
+								<div class="col-xs-12 col-sm-10 col-md-8 col-lg-8">
+									<input type="password" class="form-control large" id="password" name="password" placeholder="密码" maxlength="20">
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+								</div>
+							</div>
+							<div class="form-group form-group-lg has-feedback">
+								<label for="verifyCode" class="col-xs-12 col-sm-2 col-md-4 col-lg-4 control-label">验证码：</label>
+								<div class="col-xs-4 col-sm-2 col-md-3 col-lg-3">
+									<img src="${path!}/admin/login/verifycode" class="verify-code lazy" />
+								</div>
+								<div class="col-xs-8 col-sm-8 col-md-5 col-lg-5">
+									<input type="text" class="form-control large" id="verifyCode" placeholder="验证码" name="verifyCode" maxlength="4">
+									<span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+								</div>
+							</div>
+
+							<div class="form-group form-group-lg">
+								<label for class="col-xs-0 col-sm-0 col-md-4 col-lg-4 control-label"></label>
+								<div class="col-xs-0 col-sm-0 col-md-0 col-lg-0">
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+									<button type="submit" class="btn btn-success btn-lg col-xs-12 col-sm-12 col-md-12 col-lg-12">登陆</button>
+								</div>
+							</div>
+						</form>
+						<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-md-offset-6 col-lg-offset-6 login-area-background">
+						</div>
+					</div>
+				</div>
+		</div>
+
+
+
+		<footer>
+
+		</footer>
+
+
+	<!-- 脚本引用部分-->
+	<div>
+		<!--
+<script src="${path!}/plugins/jquery/jquery-2.1.4.min.js"></script>
+<script src="${path!}/plugins/bootstrap-3.3.5/js/bootstrap.min.js"></script>-->
+		<script src="${path!}/plugins/sea-modules/seajs/seajs/2.2.0/sea.js"></script>
+		<script type="text/javascript">
+			seajs.config({
+
+				// 别名配置
+				alias: {
+//            'es5-safe': 'gallery/es5-safe/0.9.3/es5-safe',
+//            'json': 'gallery/json/1.0.2/json',
+					'jquery': 'jquery/jquery/1.10.1/jquery',
+					'jquery-validate': 'jquery/jquery-validate/1.14.0/jquery.validate',
+					'jquery-lazyload': 'jquery/jquery-lazyload/1.9.3/jquery.lazyload'
+				},
+
+				// 变量配置
+				vars: {
+					'locale': 'zh-cn',
+					'$path':'${path!}'
+				},
+
+
+
+				// 预加载项
+				preload: [
+					'jquery'
+				],
+
+				// 调试模式
+				debug: true,
+
+
+				// Sea.js 的基础路径
+				base: '${path!}/plugins/sea-modules',
+				// 文件编码
+				charset: 'utf-8'
+			});
+			seajs.use(seajs.data.vars.$path + "/resources/management/js/login");
+		</script>
+	</div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="resources/plugins/bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="resources/plugins/bootstrap-switch/bootstrap-switch.min.css" type="text/css" rel="stylesheet">
+
+    <script src="resources/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="resources/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="resources/plugins/bootstrap-switch/bootstrap-switch.min.js"></script>
+</head>
+<body>
+<div class="switch switch-large">
+    <input type="checkbox" checked />
+</div>
+
+<div class="switch">
+    <input type="checkbox" checked />
+</div>
+
+<div class="switch switch-small">
+    <input type="checkbox" checked />
+</div>
+
+
+    <input type="checkbox" checked data-size="large" />
+
+<div id="test" data-name="zhangjian"></div>
+
+<script>
+
+    $(function () {
+
+        var flag = "auto";
+
+      /*  $("input[type='checkbox']").bootstrapSwitch({onSwitchChange:function(event, state){
+
+            console.log(flag);
+            $("input[type='checkbox']").bootstrapSwitch('state', true,true);
+        }});*/
+
+        $("input[type='checkbox']").bootstrapSwitch({
+            onColor:"success",
+            offColor:"danger"
+        });
+  /*      $("input[type='checkbox']").on('switchChange.bootstrapSwitch', function(event, state) {
+            console.log(this); // DOM element
+            console.log(event); // jQuery event
+            console.log(state); // true | false
+        });
+*/
+
+        alert($("#test").data("name"));
+    })
+
+</script>
+</body>
+</html>

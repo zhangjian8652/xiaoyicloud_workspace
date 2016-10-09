@@ -1,0 +1,43 @@
+body {
+  background-image: url("../images/background1.jpg");
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: 100%; }
+
+div .verify-code {
+  border-radius: 5px; }
+div .login-area {
+  margin-top: 60px;
+  position: relative; }
+  div .login-area .login-form {
+    position: relative;
+    z-index: 11; }
+    div .login-area .login-form p {
+      text-align: center;
+      font-weight: bold; }
+    div .login-area .login-form div .error:last-child {
+      color: #A94442;
+      margin-top: 5px;
+      margin-left: 15px; }
+    div .login-area .login-form img {
+      cursor: pointer; }
+  div .login-area .login-area-background {
+    position: absolute;
+    width: 100%;
+    height: 130%;
+    top: -30px;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 9;
+    opacity: 0.7;
+    box-shadow: 2px 2px green; }
+  @media (min-width: 992px) {
+    div .login-area .login-area-background {
+      left: -195px;
+      opacity: 0.2; } }
+  @media (max-width: 992px) {
+    div .login-area .login-area-background {
+      left: 0px;
+      opacity: 0.2; } }
+
+/*# sourceMappingURL=login.css.map */

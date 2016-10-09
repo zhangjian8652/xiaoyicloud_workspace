@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.modules.web.dao.UserDao">
+    <resultMap type="com.joker.modules.web.entity.User" id="User">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="password" column="password"/>
+        <result property="sex" column="sex" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+        <result property="email" column="email" />
+        <result property="mobile" column="mobile" />
+       <association property="picture" javaType="com.joker.modules.web.entity.Picture" select="com.vivian.web.dao.PictureDao.findPictureByUserId" column="id"/>
+    </resultMap>
+
+    <sql id="user_colums">
+        u.id,u.name,u.password,u.sex,u.email,u.mobile
+    </sql>
+
+    <!-- 查找所有用户 -->
+    <select id="selectAll" resultMap="User">
+        SELECT
+            <include refid="user_colums"/>
+        FROM
+          web_user u
+    </select>
+
+    <!-- 查找所有用户 -->
+    <select id="findUserById" resultMap="User" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="user_colums"/>
+<!--        <include refid="picture_colums"/>-->
+        FROM
+          web_user u
+       <!-- LEFT OUTER JOIN
+          web_user_picture p
+        ON
+          (u.id = p.user_id)-->
+        WHERE
+          u.id = #{id}
+    </select>
+
+    <insert id="addUser" parameterType="com.joker.modules.web.entity.User" useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[
+        INSERT INTO
+            web_user(name,password,sex,email,mobile)
+        VALUES
+           ( #{name},#{password},#{sex,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},#{email},#{mobile})
+        ]]>
+    </insert>
+
+    <update id="updateUser" parameterType="com.joker.modules.web.entity.User">
+        <![CDATA[
+        UPDATE
+            web_user
+        SET
+            name = #{name},password=#{password},sex=#{sex,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},email=#{email},mobile=#{mobile}
+        ]]>
+    </update>
+
+    
+</mapper>

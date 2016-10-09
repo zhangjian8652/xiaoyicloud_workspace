@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.joker.modules.web.dao.PictureDao">
+    <resultMap type="com.joker.modules.web.entity.Picture" id="Picture">
+            <id property="id" column="id"  javaType="java.lang.Integer"></id>
+            <result property="userId" column="user_id"  javaType="java.lang.Integer"></result>
+            <result property="url" column="url"  javaType="java.lang.String"></result>
+            <result property="name" column="name" javaType="java.lang.String"></result>
+    </resultMap>
+
+    <sql id="picture_colums">
+        id,user_id,url,name
+    </sql>
+
+
+    <!-- 根据用户id查找头像 -->
+    <select id="findPictureByUserId" resultMap="Picture" parameterType="java.lang.Integer">
+        SELECT
+         <include refid="picture_colums"/>
+        FROM
+          web_user_picture p
+        WHERE
+          p.user_id = #{userId}
+    </select>
+
+    <!-- 插入一条用户头像记录 -->
+    <insert id="addPicture" parameterType="com.joker.modules.web.entity.Picture" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO
+            web_user_picture( <include refid="picture_colums"/>)
+        VALUES
+           ( #{userId},#{url},#{name})
+    </insert>
+
+    <!-- 更新一条用户头像记录 -->
+    <update id="updatePicture" parameterType="com.joker.modules.web.entity.Picture">
+        <![CDATA[
+        UPDATE
+            web_user_picture
+        SET
+            user_id = #{userId},url=#{url},name=#{name}
+        WHERE
+            id=#{id}
+        ]]>
+    </update>
+    
+    <delete id="deletePictureById" parameterType="java.lang.Boolean">
+        <![CDATA[
+        DELETE FROM web_user_picture WHERE id=#{id}
+        ]]>
+    </delete>
+</mapper>
