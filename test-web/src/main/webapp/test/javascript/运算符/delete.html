@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        //delete 运算符
+        //1.删除全局变量
+        var a = "212";
+        console.log(a);
+        delete a;
+        console.log(a);
+
+        //2.删除对象属性
+        var obj = {name: 'jim', age: 18};
+        console.log("name:" + obj.name);
+        console.log("name" in obj);
+
+        delete obj.name;
+        console.log("name:" + obj.name);
+        console.log("name" in obj);
+
+        //3.删除数组元素
+        var arr = [100, 200, 300];
+        console.log(arr[1]);
+        console.log(1 in arr);
+
+        delete  arr[1];
+        console.log(arr[1]);
+        console.log(1 in arr);
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

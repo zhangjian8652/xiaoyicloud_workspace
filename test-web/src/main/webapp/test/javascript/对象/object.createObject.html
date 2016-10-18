@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+
+        //使用Object.create方法从原型（prototype）创建对象
+        //除了null以外，所有的对象都和另外一个对象关联（继承自另一个对象），这个另一个对象就是我们所说的原型（prototype）
+        //Object.prototype
+        //new Date() Date.prototype
+        //prototype 相当于对象所对应的类
+
+        var obj1 = Object.create(null);
+        var obj2 = Object.create(Object.prototype);
+        var obj3 = Object.create(Array.prototype);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

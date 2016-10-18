@@ -45,6 +45,7 @@
         <processorPath useClasspath="true" />
         <module name="encryption" />
         <module name="httpclient" />
+        <module name="id-generator" />
         <module name="poi-tool" />
         <module name="short-long-url" />
       </profile>
@@ -68,6 +69,7 @@
       <module name="common_workspace" target="1.5" />
       <module name="encryption" target="1.6" />
       <module name="httpclient" target="1.6" />
+      <module name="id-generator" target="1.6" />
       <module name="paypal-payment" target="1.6" />
       <module name="poi-tool" target="1.6" />
       <module name="QRCode" target="1.6" />

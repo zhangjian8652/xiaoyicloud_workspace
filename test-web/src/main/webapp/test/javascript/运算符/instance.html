@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        //instance 运算符
+        //用于判断变量是否是某一个类的实例
+        var d = new Date();
+        var b1 = d instanceof Date;
+
+        console.log("d instanceof Date:" + b1);
+        var b2 = d instanceof Object;
+
+        console.log("d instance Object:" + b2);
+
+        var b3 = d instanceof String;
+
+        console.log("d instance of String:" + b3);
+
+        var a = [1, 2, 3];
+
+        b1 = a instanceof Array;
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

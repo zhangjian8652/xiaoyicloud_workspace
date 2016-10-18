@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //属性的查询和设置（添加和删除）
+    var obj = {name: "Bill", age: 20};
+    console.log(obj.name);
+    console.log(obj["age"]);
+
+    var obj2 = {"First name": "Mike", "for": "value"};
+    console.log(obj2["First name"]);
+    console.log(obj2["For"]);
+
+    for (var i = 0; i < 10; i++) {
+        obj2["p" + Number(i + 1)] = "vaalue" + Number(i + 1);
+
+    }
+
+    for (var i = 0; i < 10; i++) {
+        console.log(obj2["p" + Number(i + 1)]);
+    }
+
+    //刪除屬性
+    delete obj["p2"];
+
+    console.log(obj["p2"]);
+
+    //檢測屬性是否存在
+    //1.運算符
+    var obj = {"name", "bill"};
+    console.log("name" in obj);//true
+    console.log("age" in obj);//false
+    console.log("toString" in obj);//true
+
+    //2.hasOwnProperty 自定義屬性
+    console.log(obj.hasOwnProperty("name"));//true
+    console.log(obj.hasOwnProperty("name1"));//false
+    console.log(obj.hasOwnProperty("toString"));//fasle
+
+    //3.propertyIsEnumberable
+    console.log(obj.propertyIsEnumerable("name"));//true
+    console.log(obj.propertyIsEnumerable("name1"));//false
+    console.log(obj.propertyIsEnumerable("toString"));//fasle
+
+    //4.undefined
+    if(obj.name1 != undefined){
+
+    }else {
+        console.log("name1 不存在")
+    }
+
+    //枚舉對象屬性
+
+    function enumObject(){
+        var obj = Object.create(Array.prototype)
+        obj.name = ("Bill");
+        obj.age = 30;
+
+        if(p in obj){
+            console.log(p);
+        }
+
+        function extend(p){
+            for (prop in p){
+                this[prop] = p[prop];
+            }
+        }
+
+        obj.extend = extend;
+
+        var parent = {x: 30, y: "abc"};
+        obj.extend(parent);
+
+        console.log(obj.y);
+    }
+
+
+
+    //讀寫屬性（getter 和 setter）
+    //1.在對象讀寫過程中完成其他一些工作
+    //2.將屬性設置為只讀或只寫
+    function getterAndSetter(){
+        var obj = {
+            name: "Bill",
+            ageValue:30,
+            get Age(){
+                console.log("get age");
+                return this.ageValue;
+            },
+            set Age(age){
+                console.log("set age");
+                this.ageValue = age;
+            },
+            get salary(){
+                return 123;
+            }
+        };
+
+        obj.age = 12;
+
+        console.log(obj.age);
+        console.log(obj.ageValue);
+
+
+    }
+
+</script>
+</body>
+</html>

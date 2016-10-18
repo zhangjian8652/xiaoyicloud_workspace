@@ -46,7 +46,7 @@
     </dependencies>
 
     <!-- 配置远程发布地址 -->
-    <distributionManagement>
+<!--    <distributionManagement>
         <repository>
             <id>nexus-releases</id>
             <name>Nexus Release Repository</name>
@@ -57,6 +57,6 @@
             <name>Nexus Snapshot Repository</name>
             <url>http://112.74.74.97:8081/nexus/content/repositories/snapshots/</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement>-->
 
 </project>

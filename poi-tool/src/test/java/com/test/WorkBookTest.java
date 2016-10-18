@@ -33,7 +33,7 @@ public class WorkBookTest {
 
     }
 
-
+    @Test
     public void newSheet() throws IOException {
         Workbook wb = new HSSFWorkbook();  // or new XSSFWorkbook();
         Sheet sheet1 = wb.createSheet("new sheet");
@@ -60,7 +60,7 @@ public class WorkBookTest {
         wb.write(fileOut);
         fileOut.close();
     }
-
+    @Test
     public void createCells() throws IOException {
         Workbook wb = new HSSFWorkbook();
         //Workbook wb = new XSSFWorkbook();
@@ -85,7 +85,7 @@ public class WorkBookTest {
         fileOut.close();
     }
 
-
+    @Test
     public void createDateCells() throws IOException {
         Workbook wb = new HSSFWorkbook();
         //Workbook wb = new XSSFWorkbook();
@@ -121,7 +121,7 @@ public class WorkBookTest {
         fileOut.close();
     }
 
-
+    @Test
     public void diferentTypesCells() throws IOException {
         Workbook wb = new HSSFWorkbook();
         Sheet sheet = wb.createSheet("new sheet");
@@ -139,20 +139,21 @@ public class WorkBookTest {
         fileOut.close();
     }
 
-
+    @Test
     public void files() throws IOException, InvalidFormatException {
         // Use a file
         Workbook wb = WorkbookFactory.create(new File(this.filePath));
 
     }
 
-
+    @Test
     public void inputStream() throws IOException, InvalidFormatException {
 
         // Use an InputStream, needs more memory
         Workbook wb = WorkbookFactory.create(new FileInputStream(this.filePath));
     }
 
+    @Test
     public void NPOIFSFile() throws IOException {
         // HSSFWorkbook, File
         NPOIFSFileSystem fs = new NPOIFSFileSystem(new File(this.filePath));
@@ -162,12 +163,14 @@ public class WorkBookTest {
 
     }
 
+    @Test
     public void NPOIInputStream() throws IOException {
         // HSSFWorkbook, InputStream, needs more memory
         NPOIFSFileSystem fs = new NPOIFSFileSystem(new FileInputStream(new File(this.filePath)));
         HSSFWorkbook wb = new HSSFWorkbook(fs.getRoot(), true);
     }
 
+    @Test
     public void OPCPackageFile() throws InvalidFormatException, IOException {
         // XSSFWorkbook, File
         OPCPackage pkg = OPCPackage.open(new File(this.filePath));
@@ -178,7 +181,7 @@ public class WorkBookTest {
 
     }
 
-
+    @Test
     public void OPCPackageInputStream() throws IOException, InvalidFormatException {
         // XSSFWorkbook, InputStream, needs more memory
         OPCPackage pkg = OPCPackage.open(new FileInputStream(new File(this.filePath)));

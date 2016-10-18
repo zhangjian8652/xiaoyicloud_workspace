@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+
+        //對象的可擴展性
+        // Object.preventExtensions 不能動態添加屬性
+        // Object.seal 不能動態添加和刪除屬性
+        // Object.freeze 對象凍結，不能動態添加和刪除屬性，不能修改屬性值
+
+        var obj = {x: 1, y: 10};
+            obj.name = "aaa";
+
+        Object.preventExtensions(obj);
+        Object.seal(obj);
+        Object.freeze(obj);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+
+        //創建數組
+        //數組索引的最大值：2^32 -2 ,最大存儲的數組元素： 2^32-1
+
+        //1.直接床就按數組，使用[...]
+        var empty = [];//空數組
+        var array1 = [1, 2, 3, 4, 5];//數組元素個位數為5
+        var misc = [1, 1.2, true, "abc"];//4個數組元素類型不同
+
+        var v = 20;
+        var array2 = [v, v * v, v + v];//數組元素變量或表達式
+        var array3 = [{x: 20, y: "abc"}, [{name: "bill"}, {value: 20}]];
+        var array4 = [1, , , , 5];//不指定undefined
+        var array5 = [, , ,];//可以默認逗號結尾，長度為3
+
+        //2. Array()
+
+        var arr1 = new Array();//空數組
+
+        var arr2 = new Array(20);
+
+        console.log(arr2.length);
+
+
+        //數組的讀和寫
+
+        function arrRW() {
+            var arr = ["h", "w"];
+            var value = arr[1];
+            arr[0] = "world";
+            arr[2] = "hello";
+            console.log(arr.length);
+            arr[4] = "abc";
+            console.log(arr[3]);
+
+        }
+
+        //数组的方法：join
+        //join方法将数组中的元素转换为字符串，并拼接在一起
+
+        var arrr = [1, 2, true];
+        console.log(arrr.join(""));
+        console.log(arrr.join(" "));
+        console.log(arrr.join("$$"));
+
+        var arrr2 = new Array(10);
+        console.log(arrr.join("*"));//显示10个*号
+
+        //reverse
+        arrr.reverse();//反顺序
+
+        //sort
+        arrr.sort();//排序
+
+        arrr.sort(function (a, b) {
+            return b - a
+        });//指定排序方法
+
+
+        //数组方法:concat
+        arrr.concat(4,5,6)
+        arrr.concat(true,[7,8,9,"abc"],6);
+
+        //数组方法slice,复制
+
+        var a1 = [1, 2, 3,4,5];
+        var a2 = a1.slice(1,4);//正向1-4
+        var a3 = a1.slice(1);//正想1到末尾
+        var a4 = a1.slice(-1,-4);//反向1-4
+
+        //数组：splice(插入或者删除数组元素)
+
+        function t(){
+            //删除素组元素
+            var arr1 = [1, 2, 2, 4];
+            arr1.splice(3);//删除目标数组下标为3以后所有的元素,返回删除的元素
+            arr1.splice(3,3);//删除目标数组下标为3以后3个元素,返回删除的元素
+            arr1.splice(3,0,"hello","abc");//
+
+
+        }
+
+
+        //数组方法：push和pop
+
+        function m(){
+            var stack = [];
+
+            stack.push(1, 2, 3);//往stack中压三个值
+
+
+        }
+
+        //数组方法：unshift (push) 和 shift （pop）方法
+        //从数组开头添加和删除元素
+        function mm(){
+
+            var stack = [];
+            stack.unshift(1);//[1]
+            stack.unshift(2);//[2,1]
+            stack.unshift(3,4);//[3,4,2,1]
+
+        }
+
+
+        //forEach
+
+
+        //filter
+        //自定义过滤方法
+
+
+        //数组方法：every和some
+        //every:针对数组中所有的元素进行判定，只有所有的数组元素都满足指定条件，every方法才返回true，否则返回false
+        //some:针对部分的数组元素，至少有一个元素满足指定条件，some方法返回true，否则返回false
+
+
+        //数组方法：reduce和reduceRight
+        //应用于数组
+        //reduce：索引从低到高处理数组元素，最终将数组转换为一个值
+        var arr = [1, 2, 3, 4,5];
+        var sum = arr.reduce(function (x,y) {
+
+            return x + y;
+        });
+
+        console.log(sum);//15
+
+        sum = arr.reduce(function (x,y) {
+
+            return x + y;
+        },1);//16
+
+
+        //数组方法：indexOf和lastIndexOf
+        var aarr = [1, 2, 3, 4, "abc", true];
+        console.log(aarr.indexOf(3));
+        console.log(aarr.lastIndexOf(3));
+
+
+        //判斷對象是否為數組的isArray方法
+
+        //强字符串作为数组看待
+        //ECMAScript
+        var ss = "hello";
+        ss.charAt(1);
+        ss.charAt(ss[2]);
+        ss[4] = "b";
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
