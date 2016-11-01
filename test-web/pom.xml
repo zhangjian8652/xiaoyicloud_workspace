@@ -42,52 +42,72 @@
             <artifactId>retrofit</artifactId>
             <version>2.1.0</version>
         </dependency>
-        <!-- the core, which includes Streaming API, shared low-level abstractions (but NOT data-binding) -->
+     <!--   &lt;!&ndash; the core, which includes Streaming API, shared low-level abstractions (but NOT data-binding) &ndash;&gt;
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson.version}</version>
         </dependency>
 
-        <!-- Just the annotations; use this dependency if you want to attach annotations
-             to classes without connecting them to the code. -->
+        &lt;!&ndash; Just the annotations; use this dependency if you want to attach annotations
+             to classes without connecting them to the code. &ndash;&gt;
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
             <version>${jackson.version}</version>
         </dependency>
 
-        <!-- databinding; ObjectMapper, JsonNode and related classes are here -->
+        &lt;!&ndash; databinding; ObjectMapper, JsonNode and related classes are here &ndash;&gt;
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
 
-        <!-- smile (binary JSON). Other artifacts in this group do other formats. -->
+        &lt;!&ndash; smile (binary JSON). Other artifacts in this group do other formats. &ndash;&gt;
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        <!-- JAX-RS provider -->
+        &lt;!&ndash; JAX-RS provider &ndash;&gt;
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-        <!-- Support for JAX-B annotations as additional configuration -->
+        &lt;!&ndash; Support for JAX-B annotations as additional configuration &ndash;&gt;
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-jaxb-annotations</artifactId>
             <version>${jackson.version}</version>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>converter-jackson</artifactId>
             <version>2.1.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-simplexml -->
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-simplexml</artifactId>
+            <version>2.1.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/logging-interceptor -->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>logging-interceptor</artifactId>
+            <version>3.3.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>19.0</version>
         </dependency>
     </dependencies>
 

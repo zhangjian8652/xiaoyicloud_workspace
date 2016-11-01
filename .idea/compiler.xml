@@ -43,11 +43,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="demo" />
         <module name="encryption" />
         <module name="httpclient" />
         <module name="id-generator" />
         <module name="poi-tool" />
         <module name="short-long-url" />
+        <module name="wechat-sdk" />
       </profile>
       <profile default="false" name="Annotation profile for QRCode" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -67,6 +69,7 @@
     <bytecodeTargetLevel>
       <module name="base-frame" target="1.8" />
       <module name="common_workspace" target="1.5" />
+      <module name="demo" target="1.6" />
       <module name="encryption" target="1.6" />
       <module name="httpclient" target="1.6" />
       <module name="id-generator" target="1.6" />
@@ -76,6 +79,7 @@
       <module name="short-long-url" target="1.6" />
       <module name="test-web" target="1.6" />
       <module name="wechat-payment" target="1.6" />
+      <module name="wechat-sdk" target="1.6" />
       <module name="xiaoyicloud_workspace" target="1.5" />
     </bytecodeTargetLevel>
   </component>

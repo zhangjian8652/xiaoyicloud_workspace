@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+        .flex-row {
+            display: flex;
+            flex-direction: row;
+      /*      align-items:center;*/
+            width: 100%;
+            height: 400px;
+
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-content:space-around;
+
+        }
+
+        .flex-column {
+            display: inline-flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+
+            width: 100%;
+            height: 400px;
+
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+        .blue {
+            background-color: blue;
+         /*   flex-grow: 1;*/
+          /*  order: 2;*/
+        }
+
+        .yellow {
+            background-color: yellow;
+         /*   flex-grow: 2;*/
+ /*           order: 1;*/
+        }
+
+        .red {
+            background-color: red;
+  /*          order: 3;*/
+        }
+
+        .black {
+            background-color: black;
+          /*  align-self:flex-end;*/
+
+        }
+
+    </style>
+</head>
+<body>
+<div class="flex-row">
+    <div class="box blue">cvzx</div>
+    <div class="box blue">cvzx</div>
+    <div class="box blue">cvzx</div>
+    <div class="box red">xcv</div>
+    <div class="box red">xcv</div>
+    <div class="box red">xcv</div>
+    <div class="box yellow">xcv</div>
+    <div class="box yellow">xcv</div>
+    <div class="box yellow">xcv</div>
+    <div class="box black"></div>
+    <div class="box black"></div>
+    <div class="box black"></div>
+
+</div>
+<div class="flex-column">
+    <div class="box blue"></div>
+    <div class="box red"></div>
+    <div class="box yellow"></div>
+    <div class="box black"></div>
+</div>
+</body>
+</html>

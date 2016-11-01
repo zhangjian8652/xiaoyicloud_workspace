@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/QRCode/QRCode.iml" filepath="$PROJECT_DIR$/QRCode/QRCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/base-frame/base-frame.iml" filepath="$PROJECT_DIR$/base-frame/base-frame.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/common_workspace.iml" filepath="$PROJECT_DIR$/.idea/common_workspace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/encryption/encryption.iml" filepath="$PROJECT_DIR$/encryption/encryption.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpclient/httpclient.iml" filepath="$PROJECT_DIR$/httpclient/httpclient.iml" />
       <module fileurl="file://$PROJECT_DIR$/paypal-payment/paypal-payment.iml" filepath="$PROJECT_DIR$/paypal-payment/paypal-payment.iml" />
@@ -12,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/short-long-url/short-long-url.iml" filepath="$PROJECT_DIR$/short-long-url/short-long-url.iml" />
       <module fileurl="file://$PROJECT_DIR$/test-web/test-web.iml" filepath="$PROJECT_DIR$/test-web/test-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/wechat-payment/wechat-payment.iml" filepath="$PROJECT_DIR$/wechat-payment/wechat-payment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wechat-sdk/wechat-sdk.iml" filepath="$PROJECT_DIR$/wechat-sdk/wechat-sdk.iml" />
     </modules>
   </component>
 </project>

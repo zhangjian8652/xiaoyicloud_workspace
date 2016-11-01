@@ -17,10 +17,15 @@ public class Testretrofit {
 
     @Test
     public void testWeatherInfo() throws IOException {
+
+
+
+
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://www.weather.com.cn/")
                 .addConverterFactory(JacksonConverterFactory.create())
                 .build();
+
 
         WethearInfoService service = retrofit.create(WethearInfoService.class);
 

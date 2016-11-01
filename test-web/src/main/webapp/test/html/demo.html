@@ -4,8 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <meta name="viewport" content="initial-scale=1.0">
+    <script src="../../resources/plugins/jquery/jquery-3.1.0.js" type="text/javascript"></script>
     <script type="text/javascript">
+        $(function () {
 
+            $.get("http://192.168.2.99:8080/PfingoAPI/v1/rates/defaultDisplay", function (data) {
+                console.log(data)
+            });
+        })
     </script>
 </head>
 <body>
