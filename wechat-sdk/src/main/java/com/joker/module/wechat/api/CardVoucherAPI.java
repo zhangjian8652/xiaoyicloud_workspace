@@ -1,4 +1,4 @@
-package com.joker.module.wechat.service;
+package com.joker.module.wechat.api;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -10,7 +10,7 @@ import com.joker.module.wechat.domain.card.Logo;
 /**
  * Created by zhangjian on 2016/10/28.
  */
-public interface CardVoucherService {
+public interface CardVoucherAPI {
 
     @Multipart
     @POST("media/uploadimg")

@@ -9,8 +9,8 @@ import com.joker.module.wechat.domain.branch.Photo;
 import com.joker.module.wechat.domain.branch.Store;
 import com.joker.module.wechat.domain.card.Logo;
 import com.joker.module.wechat.factory.RetrofitFactory;
-import com.joker.module.wechat.service.CardVoucherService;
-import com.joker.module.wechat.service.TokenService;
+import com.joker.module.wechat.api.CardVoucherAPI;
+import com.joker.module.wechat.api.TokenAPI;
 import com.joker.module.wechat.util.RetrofitUtil;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -50,7 +50,7 @@ public class InterfaceTest {
     }
 
     public void testGetAccessToken() {
-        TokenService service = retrofit.create(TokenService.class);
+        TokenAPI service = retrofit.create(TokenAPI.class);
 
         Call<Token> tokenCall = service.getToken("client_credential", "wxe093b205a79538ed", "509100ac1642334fd29273f9e6b19e57");
         try {
@@ -63,7 +63,7 @@ public class InterfaceTest {
     }
 
     public void testUploadLogo() {
-        CardVoucherService cardVoucherService = retrofit.create(CardVoucherService.class);
+        CardVoucherAPI cardVoucherService = retrofit.create(CardVoucherAPI.class);
 
         // use the FileUtils to get the actual file by uri
         File file = new File("D:\\qrcode.jpg");
@@ -120,7 +120,7 @@ public class InterfaceTest {
         Store store = new Store();
         store.setBusiness(business);
 
-        CardVoucherService cardVoucherService = retrofit.create(CardVoucherService.class);
+        CardVoucherAPI cardVoucherService = retrofit.create(CardVoucherAPI.class);
 
 
         RequestBody body = RetrofitUtil.createJsonBody(store);
