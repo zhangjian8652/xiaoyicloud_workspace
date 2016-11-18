@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/poi-tool/pom.xml" />
         <option value="$PROJECT_DIR$/demo/pom.xml" />
         <option value="$PROJECT_DIR$/wechat-sdk/pom.xml" />
+        <option value="$PROJECT_DIR$/hadoop-test/pom.xml" />
       </list>
     </option>
   </component>

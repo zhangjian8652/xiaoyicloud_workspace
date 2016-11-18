@@ -32,7 +32,7 @@ public class RetrofitFactory {
         return retrofit;
     }
 
-    public static OkHttpClient createLogOkHttpClient(){
+    private static OkHttpClient createLogOkHttpClient(){
         // 查看网络request 和 response 的具体的值
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);//设置查看日志的等级

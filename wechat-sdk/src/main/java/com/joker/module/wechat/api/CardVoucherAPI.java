@@ -1,11 +1,11 @@
 package com.joker.module.wechat.api;
 
+import com.joker.module.wechat.domain.Code;
+import com.joker.module.wechat.domain.Logo;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.*;
-import com.joker.module.wechat.domain.Code;
-import com.joker.module.wechat.domain.card.Logo;
 
 /**
  * Created by zhangjian on 2016/10/28.
