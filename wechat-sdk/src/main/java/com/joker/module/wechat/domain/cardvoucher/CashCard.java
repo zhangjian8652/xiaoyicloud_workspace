@@ -26,6 +26,10 @@ public class CashCard extends Card {
          * base_info	是	JSON结构	见上述示例。	基本的卡券数据，见下表，所有卡券通用。
          */
         private BaseInfo baseInfo;
+
+        /**
+         * advanced_info	是	JSON结构	见上述示例。	基本的卡券数据，见下表，所有卡券通用。
+         */
         private AdvancedInfo advancedInfo;
 
         /**
@@ -36,6 +40,21 @@ public class CashCard extends Card {
          * reduce_cost	是	int	10000	代金券专用，表示减免金额。（单位为分）
          */
         private int reduceCost;
+
+
+        /**
+         *
+         * @param baseInfo
+         * @param advancedInfo
+         * @param leastCost 是	int	10000	代金券专用，表示起用金额（单位为分）,如果无起用门槛则填0。
+         * @param reduceCost 是	int	10000	代金券专用，表示减免金额。（单位为分）
+         */
+        public Cash(BaseInfo baseInfo, AdvancedInfo advancedInfo, int leastCost, int reduceCost) {
+            this.baseInfo = baseInfo;
+            this.advancedInfo = advancedInfo;
+            this.leastCost = leastCost;
+            this.reduceCost = reduceCost;
+        }
 
         public BaseInfo getBaseInfo() {
             return baseInfo;

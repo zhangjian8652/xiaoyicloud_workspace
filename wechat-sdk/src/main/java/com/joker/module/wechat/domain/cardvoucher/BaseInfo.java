@@ -90,7 +90,7 @@ public class BaseInfo {
      *
      * 券颜色。按色彩规范标注填写Color010-Color100。
      */
-    private String color;
+    private Color color;
     /**
      *  notice
      *
@@ -103,10 +103,7 @@ public class BaseInfo {
      *  卡券使用提醒，字数上限为16个汉字。
      */
     private String notice;
-    /**
-     *
-     */
-    private String servicePhone;
+
 
     /**
      * description
@@ -146,39 +143,502 @@ public class BaseInfo {
 
 
     //可选参数
+
+    /**
+     * get_limit
+     *
+     * 否
+     *
+     * int
+     *
+     * 1
+     *
+     * 每人可领券的数量限制,不填写默认为50。
+     */
     private int getLimit;
+
+    /**
+     * use_custom_code
+     *
+     * 否
+     *
+     * bool	true
+     *
+     * 是否自定义Code码
+     * 。填写true或false，默认为false。
+     * 通常自有优惠码系统的开发者选择
+     * 自定义Code码，并在卡券投放时带入
+     * Code码，详情见是否自定义Code码。
+     */
     private boolean useCustomCode;
+
+
+    /**
+     * get_custom_code_mode
+     *
+     * 否
+     *
+     * string(32)
+     *
+     * GET_CUSTOM_COD
+     * E_MODE_DEPOSIT
+     *
+     * 填入
+     * GET_CUSTOM_CODE_MODE_DEPOSIT
+     * 表示该卡券为预存code模式卡券，
+     * 须导入超过库存数目的自定义code后方可投放，
+     * 填入该字段后，quantity字段须为0,须导入code
+     * 后再增加库存
+     */
+    private String getCustomCodeMode;
+
+    /**
+     * bind_openid
+     *
+     * 否
+     *
+     * bool	true
+     *
+     * 是否指定用户领取，填写true或false
+     * 。默认为false。通常指定特殊用户群体
+     * 投放卡券或防止刷券时选择指定用户领取。
+     */
     private boolean bindOpenid;
+
+
+    /**
+     * service_phone
+     *
+     * 否
+     *
+     * string（24）
+     *
+     * 40012234
+     *
+     * 客服电话。
+     */
+    private String servicePhone;
+
+    /**
+     * can_share
+     *
+     * 否
+     *
+     * bool
+     *
+     * false
+     *
+     * 卡券领取页面是否可分享。
+     */
     private boolean canShare;
+
+    /**
+     * can_give_friend
+     *
+     * 否
+     *
+     * bool
+     *
+     * false
+     *
+     * 卡券是否可转赠。
+     */
     private boolean canGivenFriend;
 
+
+    /**
+     * location_id_list
+     *
+     * 否
+     *
+     * array
+     *
+     * 1234，2312
+     *
+     * 门店位置poiid。调用POI门店管理接
+     * 口获取门店位置poiid。具备线下门店
+     * 的商户为必填。
+     */
     private List<Integer> locationIdList;
 
-    private String centerTitle;
-    private String centerSubTitle;
-    private String centerUrl;
-    private String customUrlName;
-    private String customUrl;
-    private String customUrlSubTitle;
-    private String promotionUrlName;
-    private String promotionUrl;
+    /**
+     * use_all_locations
+     * 否
+     *
+     * bool
+     *
+     * true
+     *
+     * 设置本卡券支持全部门店，与location_id_list互斥
+     */
+    private boolean useAllLocations;
+
+
+    /**
+     * source
+     *
+     * 否
+     *
+     * string（36）
+     *
+     * 大众点评
+     *
+     * 第三方来源名，例如同程旅游、大众点评。
+     */
     private String source;
 
 
+    /**
+     * custom_url_name
+     *
+     * 否
+     *
+     * string（15）
+     *
+     * 立即使用
+     *
+     * 自定义跳转外链的入口名字
+     * 。详情见活用自定义入口
+     */
+    private String customUrlName;
 
-    public static class Color{
-        public static String COLOR_010 = "Color010";
-        public static String COLOR_020 = "Color020";
-        public static String COLOR_030 = "Color030";
-        public static String COLOR_040 = "Color040";
-        public static String COLOR_050 = "Color050";
-        public static String COLOR_060 = "Color060";
-        public static String COLOR_070 = "Color070";
-        public static String COLOR_080 = "Color080";
-        public static String COLOR_090 = "Color090";
-        public static String COLOR_100 = "Color100";
-        public static String COLOR_101 = "Color101";
-        public static String COLOR_102 = "Color102";
+    /**
+     * center_title
+     *
+     * 否
+     *
+     * string（18）
+     *
+     * 立即使用
+     *
+     * 卡券顶部居中的按钮，仅在卡券状
+     * 态正常(可以核销)时显示
+     */
+    private String centerTitle;
+
+    /**
+     * center_sub_title
+     *
+     * 否
+     *
+     * string（24）
+     *
+     * 立即享受优惠
+     *
+     * 显示在入口下方的提示语
+     * ，仅在卡券状态正常(可以核销)时显示。
+     */
+    private String centerSubTitle;
+
+    /**
+     * center_url
+     *
+     * 否
+     *
+     * string（128）
+     *
+     * www.qq.com
+     *
+     * 顶部居中的url
+     * ，仅在卡券状态正常(可以核销)时显示。
+     */
+    private String centerUrl;
+
+    /**
+     * custom_url
+     *
+     * 否
+     *
+     * string（128）
+     *
+     * www.qq.com
+     *
+     * 自定义跳转的URL。
+     */
+    private String customUrl;
+
+    /**
+     * custom_url_sub_title
+     *
+     * 否
+     *
+     * string（18）
+     *
+     * 更多惊喜
+     *
+     * 显示在入口右侧的提示语。
+     */
+    private String customUrlSubTitle;
+
+    /**
+     * promotion_url_name
+     *
+     * 否
+     *
+     * string（15）
+     *
+     * 产品介绍
+     *
+     * 营销场景的自定义入口名称。
+     */
+    private String promotionUrlName;
+
+    /**
+     * promotion_url
+     *
+     * 否
+     *
+     * string（128）
+     *
+     * www.qq.com
+     *
+     * 入口跳转外链的地址链接。
+     */
+    private String promotionUrl;
+
+
+    /**
+     * promotion_url_sub_title
+     *
+     * 否
+     *
+     * string（18）
+     *
+     * 卖场大优惠。
+     *
+     * 显示在营销入口右侧的提示语。
+     */
+    private String promotionUrlSubTitle;
+
+
+
+
+    public String getLoginUrl() {
+        return loginUrl;
+    }
+
+    public void setLoginUrl(String loginUrl) {
+        this.loginUrl = loginUrl;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getCodeType() {
+        return codeType;
+    }
+
+    public void setCodeType(String codeType) {
+        this.codeType = codeType;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public String getNotice() {
+        return notice;
+    }
+
+    public void setNotice(String notice) {
+        this.notice = notice;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public DateInfo getDateInfo() {
+        return dateInfo;
+    }
+
+    public void setDateInfo(DateInfo dateInfo) {
+        this.dateInfo = dateInfo;
+    }
+
+    public Sku getSku() {
+        return sku;
+    }
+
+    public void setSku(Sku sku) {
+        this.sku = sku;
+    }
+
+    public int getGetLimit() {
+        return getLimit;
+    }
+
+    public void setGetLimit(int getLimit) {
+        this.getLimit = getLimit;
+    }
+
+    public boolean isUseCustomCode() {
+        return useCustomCode;
+    }
+
+    public void setUseCustomCode(boolean useCustomCode) {
+        this.useCustomCode = useCustomCode;
+    }
+
+    public String getGetCustomCodeMode() {
+        return getCustomCodeMode;
+    }
+
+    public void setGetCustomCodeMode(String getCustomCodeMode) {
+        this.getCustomCodeMode = getCustomCodeMode;
+    }
+
+    public boolean isBindOpenid() {
+        return bindOpenid;
+    }
+
+    public void setBindOpenid(boolean bindOpenid) {
+        this.bindOpenid = bindOpenid;
+    }
+
+    public String getServicePhone() {
+        return servicePhone;
+    }
+
+    public void setServicePhone(String servicePhone) {
+        this.servicePhone = servicePhone;
+    }
+
+    public boolean isCanShare() {
+        return canShare;
+    }
+
+    public void setCanShare(boolean canShare) {
+        this.canShare = canShare;
+    }
+
+    public boolean isCanGivenFriend() {
+        return canGivenFriend;
+    }
+
+    public void setCanGivenFriend(boolean canGivenFriend) {
+        this.canGivenFriend = canGivenFriend;
+    }
+
+    public List<Integer> getLocationIdList() {
+        return locationIdList;
+    }
+
+    public void setLocationIdList(List<Integer> locationIdList) {
+        this.locationIdList = locationIdList;
+    }
+
+    public boolean isUseAllLocations() {
+        return useAllLocations;
+    }
+
+    public void setUseAllLocations(boolean useAllLocations) {
+        this.useAllLocations = useAllLocations;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getCustomUrlName() {
+        return customUrlName;
+    }
+
+    public void setCustomUrlName(String customUrlName) {
+        this.customUrlName = customUrlName;
+    }
+
+    public String getCenterTitle() {
+        return centerTitle;
+    }
+
+    public void setCenterTitle(String centerTitle) {
+        this.centerTitle = centerTitle;
+    }
+
+    public String getCenterSubTitle() {
+        return centerSubTitle;
+    }
+
+    public void setCenterSubTitle(String centerSubTitle) {
+        this.centerSubTitle = centerSubTitle;
+    }
+
+    public String getCenterUrl() {
+        return centerUrl;
+    }
+
+    public void setCenterUrl(String centerUrl) {
+        this.centerUrl = centerUrl;
+    }
+
+    public String getCustomUrl() {
+        return customUrl;
+    }
+
+    public void setCustomUrl(String customUrl) {
+        this.customUrl = customUrl;
+    }
+
+    public String getCustomUrlSubTitle() {
+        return customUrlSubTitle;
+    }
+
+    public void setCustomUrlSubTitle(String customUrlSubTitle) {
+        this.customUrlSubTitle = customUrlSubTitle;
+    }
+
+    public String getPromotionUrlName() {
+        return promotionUrlName;
+    }
+
+    public void setPromotionUrlName(String promotionUrlName) {
+        this.promotionUrlName = promotionUrlName;
+    }
+
+    public String getPromotionUrl() {
+        return promotionUrl;
+    }
+
+    public void setPromotionUrl(String promotionUrl) {
+        this.promotionUrl = promotionUrl;
+    }
+
+    public String getPromotionUrlSubTitle() {
+        return promotionUrlSubTitle;
+    }
+
+    public void setPromotionUrlSubTitle(String promotionUrlSubTitle) {
+        this.promotionUrlSubTitle = promotionUrlSubTitle;
+    }
+
+    public enum Color{
+       COLOR010,COLOR020,COLOR030,COLOR040,COLOR050,COLOR060,COLOR070,COLOR080,COLOR090,COLOR100,COLOR101,COLOR102
     }
 
 
@@ -199,7 +659,7 @@ public class BaseInfo {
          *
          * 使用时间的类型，旧文档采用的1和2依然生效。
          */
-        private String type;
+        private DateType type;
 
         /**
          * begin_timestamp
@@ -258,9 +718,45 @@ public class BaseInfo {
         private int fixedBeginTerm;
 
 
+        public DateType getType() {
+            return type;
+        }
 
+        public void setType(DateType type) {
+            this.type = type;
+        }
 
+        public long getBeginTimestamp() {
+            return beginTimestamp;
+        }
 
+        public void setBeginTimestamp(long beginTimestamp) {
+            this.beginTimestamp = beginTimestamp;
+        }
+
+        public long getEndTimestamp() {
+            return endTimestamp;
+        }
+
+        public void setEndTimestamp(long endTimestamp) {
+            this.endTimestamp = endTimestamp;
+        }
+
+        public int getFixedTerm() {
+            return fixedTerm;
+        }
+
+        public void setFixedTerm(int fixedTerm) {
+            this.fixedTerm = fixedTerm;
+        }
+
+        public int getFixedBeginTerm() {
+            return fixedBeginTerm;
+        }
+
+        public void setFixedBeginTerm(int fixedBeginTerm) {
+            this.fixedBeginTerm = fixedBeginTerm;
+        }
     }
 
     public class Sku {
@@ -268,11 +764,17 @@ public class BaseInfo {
          * quantity	是	int	100000	卡券库存的数量，上限为100000000。
          */
         private int quantity;
-    }
-    public static class DateType{
 
-        public static String FIX_TIME_RANGE = "DATE_TYPE_FIX_TIME_RANGE";
-        public static String FIX_TERM = "DATE_TYPE_FIX_TERM";
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+    }
+    public enum DateType{
+       DATE_TYPE_FIX_TIME_RANGE,DATE_TYPE_FIX_TERM
     }
 
 }

@@ -6,9 +6,18 @@ package com.joker.module.wechat.domain.cardvoucher;
 public class GIFTCard extends Card {
 
 
+    private GIFT gift;
 
     public GIFTCard() {
         super(CARD_TYPE_GIFT);
+    }
+
+    public GIFT getGift() {
+        return gift;
+    }
+
+    public void setGift(GIFT gift) {
+        this.gift = gift;
     }
 
     public class GIFT{

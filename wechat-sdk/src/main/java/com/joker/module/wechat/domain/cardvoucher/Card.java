@@ -1,9 +1,11 @@
 package com.joker.module.wechat.domain.cardvoucher;
 
+import java.io.Serializable;
+
 /**
  * Created by zhangjian on 2016/11/18.
  */
-public class Card {
+public class Card implements Serializable{
 
     public static String CARD_TYPE_GROUPON = "GROUPON";
     public static String CARD_TYPE_CASH = "CASH";
