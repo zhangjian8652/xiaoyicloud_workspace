@@ -25,7 +25,7 @@ public class RetrofitFactory {
         OkHttpClient okHttpClient = createLogOkHttpClient();
 
         Retrofit retrofit = new Retrofit.Builder().client(okHttpClient)
-                .baseUrl("https://api.weixin.qq.com/cgi-bin/")
+                .baseUrl("https://api.weixin.qq.com/")
                 .addConverterFactory(JacksonConverterFactory.create(mapper))
                 .build();
 

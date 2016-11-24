@@ -10,6 +10,7 @@ public class Card implements Serializable{
     public static String CARD_TYPE_GROUPON = "GROUPON";
     public static String CARD_TYPE_CASH = "CASH";
     public static String CARD_TYPE_DISCOUNT = "DISCOUNT";
+    public static String CARD_TYPE_MEMBER_CARD = "MEMBER_CARD";
     public static String CARD_TYPE_GIFT = "GIFT";
     public static String CARD_TYPE_GENERAL_COUPON = "GENERAL_COUPON";
 

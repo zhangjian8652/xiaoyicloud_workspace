@@ -2,6 +2,7 @@ package com.joker.module.wechat.api;
 
 import com.joker.module.wechat.domain.Code;
 import com.joker.module.wechat.domain.Logo;
+import com.joker.module.wechat.result.CardVoucherAPIResult;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -13,12 +14,24 @@ import retrofit2.http.*;
 public interface CardVoucherAPI {
 
     @Multipart
-    @POST("media/uploadimg")
+    @POST("cgi-bin/media/uploadimg")
     Call<Logo> uploadLogo(@Query("access_token") String accessToken, @Query("type")String type, @Part MultipartBody.Part logo);
 
-    @POST("poi/addpoi")
+
+    /**
+     * 添加门店
+     * @param accessToken 认证token
+     * @param body 请求体
+     * @return
+     */
+    @POST("cgi-bin/poi/addpoi")
     @Headers({"Content-Type: application/json","Accept: application/json"})//需要添加头
     Call<Code> addPOI(@Query("access_token") String accessToken, @Body RequestBody body);
+
+
+    @POST("card/create")
+    @Headers({"Content-Type: application/json","Accept: application/json"})//需要添加头
+    Call<CardVoucherAPIResult> createCardVoucher(@Query("access_token") String accessToken, @Body RequestBody body);
 
 
 }

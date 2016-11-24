@@ -2,6 +2,7 @@ package com.joker.module.wechat.domain.cardvoucher;
 
 /**
  * Created by zhangjian on 2016/11/18.
+ * 兑换券
  */
 public class GIFTCard extends Card {
 

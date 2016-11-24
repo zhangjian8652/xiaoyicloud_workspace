@@ -2,6 +2,7 @@ package com.joker.module.wechat.domain.cardvoucher;
 
 /**
  * Created by zhangjian on 2016/11/18.
+ * 团购券
  */
 public class GrouponCard extends Card {
 

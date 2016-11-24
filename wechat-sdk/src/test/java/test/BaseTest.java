@@ -8,12 +8,14 @@ import com.joker.module.wechat.factory.RetrofitFactory;
 import com.joker.module.wechat.util.RetrofitUtil;
 import okhttp3.MultipartBody;
 import org.junit.Before;
+import org.junit.Test;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 /**
  * Created by zhangjian on 2016/11/18.
@@ -52,7 +54,9 @@ public class BaseTest {
         CardVoucherAPI cardVoucherService = retrofit.create(CardVoucherAPI.class);
 
         // use the FileUtils to get the actual file by uri
-        File file = new File("D:\\qrcode.jpg");
+
+        URL url = BaseTest.class.getClassLoader().getResource("qrcode.jpg");
+        File file = new File(url.getFile());
         MultipartBody.Part body = RetrofitUtil.createFilePart("buffer", file);
         Call<Logo> logoCall = cardVoucherService.uploadLogo(token.getAccessToken(), "image", body);
 
@@ -63,6 +67,15 @@ public class BaseTest {
             e.printStackTrace();
         }
 
+    }
+
+
+    @Test
+    public void test1(){
+        URL url = BaseTest.class.getClassLoader().getResource("qrcode.jpg");
+        File file = new File(url.getFile());
+
+        System.out.println(file.getAbsolutePath());
     }
 
 }

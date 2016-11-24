@@ -1,28 +1,28 @@
-package com.joker.module.wechat.error;
+package com.joker.module.wechat.result;
 
 import java.io.Serializable;
 
 /**
  * Created by zhangjian on 2016/11/21.
  */
-public class BaseError implements Serializable{
+public class BaseResult implements Serializable{
 
-    private String errcode;
+    private Integer errcode;
     private String errmsg;
 
-    public BaseError(String errcode, String errmsg) {
+    public BaseResult(Integer errcode, String errmsg) {
         this.errcode = errcode;
         this.errmsg = errmsg;
     }
 
-    public BaseError() {
+    public BaseResult() {
     }
 
-    public String getErrcode() {
+    public Integer getErrcode() {
         return errcode;
     }
 
-    public void setErrcode(String errcode) {
+    public void setErrcode(Integer errcode) {
         this.errcode = errcode;
     }
 
@@ -32,5 +32,10 @@ public class BaseError implements Serializable{
 
     public void setErrmsg(String errmsg) {
         this.errmsg = errmsg;
+    }
+
+
+    public boolean isSuccess(){
+        return errcode != null && errcode == 0;
     }
 }

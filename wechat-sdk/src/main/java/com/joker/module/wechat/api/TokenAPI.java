@@ -10,6 +10,6 @@ import com.joker.module.wechat.domain.Token;
  */
 public interface TokenAPI {
 
-    @GET("token")
+    @GET("cgi-bin/token")
     public Call<Token> getToken(@Query("grant_type") String grantType, @Query("appid") String appid, @Query("secret") String secret);
 }
