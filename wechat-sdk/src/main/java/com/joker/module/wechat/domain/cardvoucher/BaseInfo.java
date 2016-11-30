@@ -31,7 +31,7 @@ public class BaseInfo {
      *
      * 卡券的商户logo，建议像素为300*300。
      */
-    private String loginUrl;
+    private String logoUrl;
 
 
     /**
@@ -65,7 +65,7 @@ public class BaseInfo {
      * "CODE_TYPE_ONLY_BARCODE",一维码无code显示；CODE_TYPE_NONE，
      * 不显示code和条形码类型
      */
-    private String codeType;
+    private CodeType codeType;
 
     /**
      * title
@@ -149,13 +149,13 @@ public class BaseInfo {
      *
      * 否
      *
-     * int
+     * Integer
      *
      * 1
      *
      * 每人可领券的数量限制,不填写默认为50。
      */
-    private int getLimit;
+    private Integer getLimit;
 
     /**
      * use_custom_code
@@ -243,7 +243,7 @@ public class BaseInfo {
      *
      * 卡券是否可转赠。
      */
-    private boolean canGivenFriend;
+    private boolean canGiveFriend;
 
 
     /**
@@ -411,14 +411,30 @@ public class BaseInfo {
     private String promotionUrlSubTitle;
 
 
+    /**
+     * 否
+     *
+     * bool
+     *
+     * 填写true为用户点击进入会员卡时推送事件，默认为false。详情见进入会员卡事件推送
+     */
+    private boolean needPushOnView;
 
 
-    public String getLoginUrl() {
-        return loginUrl;
+    public boolean isNeedPushOnView() {
+        return needPushOnView;
     }
 
-    public void setLoginUrl(String loginUrl) {
-        this.loginUrl = loginUrl;
+    public void setNeedPushOnView(boolean needPushOnView) {
+        this.needPushOnView = needPushOnView;
+    }
+
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    public void setLogoUrl(String logoUrl) {
+        this.logoUrl = logoUrl;
     }
 
     public String getBrandName() {
@@ -429,11 +445,11 @@ public class BaseInfo {
         this.brandName = brandName;
     }
 
-    public String getCodeType() {
+    public CodeType getCodeType() {
         return codeType;
     }
 
-    public void setCodeType(String codeType) {
+    public void setCodeType(CodeType codeType) {
         this.codeType = codeType;
     }
 
@@ -485,11 +501,11 @@ public class BaseInfo {
         this.sku = sku;
     }
 
-    public int getGetLimit() {
+    public Integer getGetLimit() {
         return getLimit;
     }
 
-    public void setGetLimit(int getLimit) {
+    public void setGetLimit(Integer getLimit) {
         this.getLimit = getLimit;
     }
 
@@ -533,12 +549,12 @@ public class BaseInfo {
         this.canShare = canShare;
     }
 
-    public boolean isCanGivenFriend() {
-        return canGivenFriend;
+    public boolean isCanGiveFriend() {
+        return canGiveFriend;
     }
 
-    public void setCanGivenFriend(boolean canGivenFriend) {
-        this.canGivenFriend = canGivenFriend;
+    public void setCanGiveFriend(boolean canGiveFriend) {
+        this.canGiveFriend = canGiveFriend;
     }
 
     public List<Integer> getLocationIdList() {
@@ -638,7 +654,7 @@ public class BaseInfo {
     }
 
     public enum Color{
-       COLOR010,COLOR020,COLOR030,COLOR040,COLOR050,COLOR060,COLOR070,COLOR080,COLOR090,COLOR100,COLOR101,COLOR102
+       Color010,Color020,Color030,Color040,Color050,Color060,Color070,Color080,Color090,Color100,Color101,Color102
     }
 
 
@@ -666,7 +682,7 @@ public class BaseInfo {
          *
          * 是
          *
-         * unsigned int
+         * unsigned Integer
          *
          * 14300000
          *
@@ -679,7 +695,7 @@ public class BaseInfo {
          *
          * 是
          *
-         * unsigned int
+         * unsigned Integer
          *
          * 15300000
          *
@@ -696,26 +712,26 @@ public class BaseInfo {
          *
          * 是
          *
-         * int
+         * Integer
          *
          * 15
          *
          * type为DATE_TYPE_FIX_TERM时专用，表示自领取后多少天内有效，不支持填写0。
          */
-        private int fixedTerm;
+        private Integer fixedTerm;
 
         /**
          * fixed_begin_term
          *
          * 是
          *
-         * int
+         * Integer
          *
          * 0
          *
          * type为DATE_TYPE_FIX_TERM时专用，表示自领取后多少天开始生效，领取后当天生效填写0。（单位为天）
          */
-        private int fixedBeginTerm;
+        private Integer fixedBeginTerm;
 
 
         public DateType getType() {
@@ -742,39 +758,54 @@ public class BaseInfo {
             this.endTimestamp = endTimestamp;
         }
 
-        public int getFixedTerm() {
+        public Integer getFixedTerm() {
             return fixedTerm;
         }
 
-        public void setFixedTerm(int fixedTerm) {
+        public void setFixedTerm(Integer fixedTerm) {
             this.fixedTerm = fixedTerm;
         }
 
-        public int getFixedBeginTerm() {
+        public Integer getFixedBeginTerm() {
             return fixedBeginTerm;
         }
 
-        public void setFixedBeginTerm(int fixedBeginTerm) {
+        public void setFixedBeginTerm(Integer fixedBeginTerm) {
             this.fixedBeginTerm = fixedBeginTerm;
         }
     }
 
     public class Sku {
         /**
-         * quantity	是	int	100000	卡券库存的数量，上限为100000000。
+         * quantity	是	Integer	100000	卡券库存的数量，上限为100000000。
          */
-        private int quantity;
+        private Integer quantity;
 
-        public int getQuantity() {
+        public Integer getQuantity() {
             return quantity;
         }
 
-        public void setQuantity(int quantity) {
+        public void setQuantity(Integer quantity) {
             this.quantity = quantity;
         }
     }
     public enum DateType{
-       DATE_TYPE_FIX_TIME_RANGE,DATE_TYPE_FIX_TERM
+       DATE_TYPE_FIX_TIME_RANGE,DATE_TYPE_FIX_TERM,DATE_TYPE_PERMANENT
+    }
+
+
+    public enum CodeType{
+        /**
+         * 码型：
+         * "CODE_TYPE_TEXT"文本；
+         * "CODE_TYPE_BARCODE"一维码
+         * "CODE_TYPE_QRCODE"二维码
+         * "CODE_TYPE_ONLY_QRCODE",二维码无code显示；
+         * "CODE_TYPE_ONLY_BARCODE",一维码无code显示；CODE_TYPE_NONE，
+         * 不显示code和条形码类型
+         */
+        CODE_TYPE_TEXT,CODE_TYPE_BARCODE,CODE_TYPE_QRCODE,CODE_TYPE_ONLY_QRCODE,CODE_TYPE_ONLY_BARCODE
+
     }
 
 }

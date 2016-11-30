@@ -1,5 +1,6 @@
 package com.joker.module.wechat.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
@@ -20,6 +21,7 @@ public class RetrofitUtil {
         objectMapper = new ObjectMapper();
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategy
                 .SNAKE_CASE);
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
     }
 
@@ -41,6 +43,7 @@ public class RetrofitUtil {
         String jsonData = null;
         try {
              jsonData = objectMapper.writeValueAsString(object);
+            System.out.println(jsonData);
             // create RequestBody instance from file
             RequestBody requestJsonBody =
                     RequestBody.create(MediaType.parse("application/json; charset=utf-8"), jsonData);

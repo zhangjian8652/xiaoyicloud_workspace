@@ -22,6 +22,7 @@
         <!-- 编译时的编码 -->
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <jackson.version>2.4.4</jackson.version>
+        <package.environment>dev</package.environment>
     </properties>
 
 
@@ -126,7 +127,14 @@
                         <warSourceIncludes>**/*.js,**/*.jsp,**/*.jpg,**/*.css,**/*.tld,**/*.xml</warSourceIncludes>
                     -->
                     <webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
-
+                    <webResources>
+                        <resource>
+                            <!-- this is relative to the pom.xml directory -->
+                            <directory>src/main/resources/${package.environment}</directory>
+                            <targetPath>WEB-INF/classes</targetPath>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
                 </configuration>
             </plugin>
             <plugin>
@@ -134,8 +142,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <encoding>UTF-8</encoding><!-- 指定编码格式，否则在DOS下运行mvn compile命令时会出现莫名的错误，因为系统默认使用GBK编码 -->
                 </configuration>
             </plugin>

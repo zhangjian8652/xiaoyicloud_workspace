@@ -17,12 +17,20 @@ public class Card implements Serializable{
     /**
      * card_type	是	string(24)	GROUPON	团购券类型。
      */
-    private String cardType;
+    protected String cardType;
 
     public Card(String cardType) {
         this.cardType = cardType;
     }
 
     public Card() {
+    }
+
+    public String getCardType() {
+        return cardType;
+    }
+
+    public void setCardType(String cardType) {
+        this.cardType = cardType;
     }
 }

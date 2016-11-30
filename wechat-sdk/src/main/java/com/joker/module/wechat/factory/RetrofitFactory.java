@@ -15,17 +15,19 @@ public class RetrofitFactory {
 
     //生成微信api的retrofit对象
     public static Retrofit wechatAPIRetrofit(){
+        return APIRetrofit("https://api.weixin.qq.com/");
+    }
 
+    public static Retrofit APIRetrofit(String baseURL){
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.setPropertyNamingStrategy(PropertyNamingStrategy
                 .SNAKE_CASE);
 
-
         OkHttpClient okHttpClient = createLogOkHttpClient();
 
         Retrofit retrofit = new Retrofit.Builder().client(okHttpClient)
-                .baseUrl("https://api.weixin.qq.com/")
+                .baseUrl(baseURL)
                 .addConverterFactory(JacksonConverterFactory.create(mapper))
                 .build();
 

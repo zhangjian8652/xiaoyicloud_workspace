@@ -1,4 +1,4 @@
-package com.joker.module.wechat.result;
+package com.joker.module.wechat.api.result;
 
 import java.io.Serializable;
 
@@ -36,6 +36,7 @@ public class BaseResult implements Serializable{
 
 
     public boolean isSuccess(){
-        return errcode != null && errcode == 0;
+        return errcode != null && errcode == 0 && errmsg != null && "ok".equalsIgnoreCase(errmsg);
     }
+
 }

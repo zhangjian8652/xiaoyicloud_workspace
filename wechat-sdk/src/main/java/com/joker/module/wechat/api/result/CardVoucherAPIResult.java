@@ -1,4 +1,4 @@
-package com.joker.module.wechat.result;
+package com.joker.module.wechat.api.result;
 
 /**
  * Created by zhangjian on 2016/11/21.

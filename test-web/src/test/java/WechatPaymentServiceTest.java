@@ -31,7 +31,7 @@ public class WechatPaymentServiceTest {
     @Test
     public void testOpenPreOrder() throws WechatServiceException {
         WechatPaymentService wechatPaymentService = new WechatPaymentServiceImpl();
-        WechatPrePayOrder wechatPrePayOrder = wechatPaymentService.generateOpenPrePayOrder(1, "商品购买", "16082502493539980431", "oR7Jls7DS9fhYcaqvjJZTzE-QHlU", "http://pweb.xiaoyicloud.cn/payment/gateway/ipn","10.172.42.1");
+        WechatPrePayOrder wechatPrePayOrder = wechatPaymentService.generateOpenPrePayOrder(1, "商品购买", "16082502493539980412", "oR7Jls7DS9fhYcaqvjJZTzE-QHlU", "http://pweb.xiaoyicloud.cn/payment/gateway/ipn","10.172.42.1");
     }
 
     @Test

@@ -38,7 +38,7 @@ public class MemberCard extends Card {
         /**
          * 否	bool	true	设置为true时会员卡支持一键开卡，不允许同时传入activate_url字段，否则设置wx_activate失效。填入该字段后仍需调用接口设置开卡项方可生效，详情见一键开卡。
          */
-        private String wxActivate;
+        private boolean wxActivate;
         /**
          * 否	string(32)	xxxx.com	设置跳转外链查看积分详情。仅适用于积分无法通过激活接口同步的情况下使用该字段。
          */
@@ -161,11 +161,11 @@ public class MemberCard extends Card {
             this.activateUrl = activateUrl;
         }
 
-        public String getWxActivate() {
+        public boolean getWxActivate() {
             return wxActivate;
         }
 
-        public void setWxActivate(String wxActivate) {
+        public void setWxActivate(boolean wxActivate) {
             this.wxActivate = wxActivate;
         }
 
