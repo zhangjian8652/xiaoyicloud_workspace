@@ -1,11 +1,8 @@
 package com.joker.common.json;
 
-import com.fasterxml.jackson.core.JsonFactory;
-import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
-import java.io.StringWriter;
 
 /**
  * @Author zhangjian
@@ -24,22 +21,17 @@ public class JSonUtil {
     }
 
 
-    public static String getJsonString(Object responseData){
+    public static String getJsonString(Object object){
 
         mapper = getMapperInstance(false);
 
         String json = "";
         try {
-            JsonGenerator gen;
-            StringWriter writer = new StringWriter();
-            gen = new JsonFactory().createJsonGenerator(writer);
-            mapper.writeValue(gen, responseData);
-            gen.close();
-            json = writer.toString();
-            writer.close();
+
+           json =  mapper.writeValueAsString(object);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+    }
         return json;
     }
 
@@ -59,7 +51,7 @@ public class JSonUtil {
         String entityString = "{\"name\":\"wangmengfei\",\"color\":\"白色\",\"age\":\"15\",\"master\":{\"name\":\"飞天猫\",\"age\":\"20\",\"sex\":\"26\"}}";
         mapper = getMapperInstance(false);
         Dog dog = (Dog) getJavaBean(entityString,Dog.class);
-        System.out.println("dog = [" + dog + "]");
+        System.out.println(getJsonString(dog));
 
     }
 
