@@ -1,5 +1,6 @@
+package thread;
+
 import org.junit.Test;
-import thread.BarrierThreadAwait;
 
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
@@ -24,7 +25,7 @@ public class CyclicbarrierTest {
         System.out.println(barrier.getNumberWaiting());
         new BarrierThreadAwait(barrier).start();
 
-
+        String s = "";
 
 
     }

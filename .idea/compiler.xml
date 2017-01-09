@@ -70,6 +70,7 @@
     <bytecodeTargetLevel target="1.7">
       <module name="base-frame" target="1.8" />
       <module name="common_workspace" target="1.5" />
+      <module name="demo" target="1.6" />
       <module name="encryption" target="1.6" />
       <module name="hadoop-test" target="1.6" />
       <module name="httpclient" target="1.6" />
@@ -77,7 +78,7 @@
       <module name="poi-tool" target="1.6" />
       <module name="QRCode" target="1.6" />
       <module name="short-long-url" target="1.6" />
-      <module name="test-web" target="1.7" />
+      <module name="test-web" target="1.8" />
       <module name="wechat-payment" target="1.6" />
       <module name="wechat-sdk" target="1.6" />
     </bytecodeTargetLevel>

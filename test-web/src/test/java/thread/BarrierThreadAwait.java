@@ -15,7 +15,9 @@ public class BarrierThreadAwait extends Thread {
 
     public void run() {
         try {
+            System.out.println("aaa");
             barrier.await();
+            System.out.println("bbb");
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (BrokenBarrierException e) {

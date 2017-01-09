@@ -128,4 +128,25 @@ public class StringTest {
 
         System.out.println(str);
     }
+
+
+    @Test
+    public void test2(){
+
+        String a = "aaaaaa";
+
+        String b = a;
+
+
+        chang(b);
+        System.out.println(a);
+
+    }
+
+    public void chang(String string) {
+        string = "change";
+    }
+
+
+
 }

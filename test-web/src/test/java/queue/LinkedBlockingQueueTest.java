@@ -22,7 +22,6 @@ public class LinkedBlockingQueueTest {
         System.out.println(queue.poll());
         System.out.println(queue.poll());
         System.out.println(queue.poll());
-        System.out.println(queue.poll());
     }
 
 
@@ -42,7 +41,7 @@ public class LinkedBlockingQueueTest {
     }
 
     @Test
-    public void testPut(){
+    public void testOffer(){
         Queue<String> queue = new LinkedBlockingQueue<String>(100);
         queue.offer("a");
         queue.offer("b");

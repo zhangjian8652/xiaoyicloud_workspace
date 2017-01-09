@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/QRCode/QRCode.iml" filepath="$PROJECT_DIR$/QRCode/QRCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/base-frame/base-frame.iml" filepath="$PROJECT_DIR$/base-frame/base-frame.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/common_workspace.iml" filepath="$PROJECT_DIR$/.idea/common_workspace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-demo/demo.iml" filepath="$PROJECT_DIR$/spring-boot-demo/demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/encryption/encryption.iml" filepath="$PROJECT_DIR$/encryption/encryption.iml" />
       <module fileurl="file://$PROJECT_DIR$/hadoop-test/hadoop-test.iml" filepath="$PROJECT_DIR$/hadoop-test/hadoop-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpclient/httpclient.iml" filepath="$PROJECT_DIR$/httpclient/httpclient.iml" />
