@@ -126,6 +126,49 @@ public class WechatPaymentServiceImpl implements WechatPaymentService {
         return wechatPrePayOrder;
     }
 
+    @Override
+    public WechatPrePayOrder generateOpenPrePayOrder(int mount, String tittle, String outTradeNo,String attach, String openid, String notifyUrl, String ip) throws WechatServiceException {
+
+        WechatOrder wechatOrder = new WechatOrder();
+        wechatOrder.setKey(WechatPaymentConfig.KEY);
+        wechatOrder.setAppid(WechatPaymentConfig.APPID);
+        wechatOrder.setDeviceInfo(WechatOrder.DEVICE_INFO_WEB);
+        wechatOrder.setMchId(WechatPaymentConfig.MCH_ID);
+        wechatOrder.setBody(tittle);
+        wechatOrder.setNonceStr(UUID.randomUUID().toString().replaceAll("-", ""));
+        wechatOrder.setNotifyUrl(notifyUrl);
+        wechatOrder.setOpenid(openid);
+        wechatOrder.setOutTradeNo(outTradeNo);
+        wechatOrder.setSpbillCreateIp(ip);
+        wechatOrder.setTotalFee(mount);
+        wechatOrder.setTradeType(WechatOrder.TRADE_TYPE_JSAPI);
+        wechatOrder.setAttach(attach);
+
+
+        logger.debug("wechat 下单参数:" + wechatOrder.toString());
+
+        String xmlParams = null;
+        xmlParams = getOrderParamsXMLString(wechatOrder, xmlParams);
+
+        WechatPaymentHttpClient client = new WechatPaymentHttpClient(WechatPaymentHttpClient.ORDER_ADDRESS);
+        Response response = client.post(WechatPaymentHttpClient.CREATE_ORDER_URI, xmlParams);
+
+        if (!response.isSuccess()) {
+            logger.debug("WechatPaymentServiceImpl.generateOpenPrePayOrder :" + response.getString());
+            throw new WechatServiceException("创建生成预支付订单失败");
+        }
+
+        WechatPrePayOrder wechatPrePayOrder = null;
+        wechatPrePayOrder = getWechatPrePayOrder(response.getString());
+
+        if (wechatPrePayOrder != null && WechatPrePayOrder.RETURN_CODE_FAIL.equalsIgnoreCase(wechatPrePayOrder.getReturnCode())) {
+            throw new WebServiceException("微信接口调用失败:原因" + wechatPrePayOrder.getReturnMsg());
+        }
+
+        return wechatPrePayOrder;
+    }
+
+
     private WechatPrePayOrder getWechatPrePayOrder(String data) {
         WechatPrePayOrder wechatPrePayOrder;
         try {
@@ -179,6 +222,48 @@ public class WechatPaymentServiceImpl implements WechatPaymentService {
 
         return wechatPrePayOrder;
     }
+
+    @Override
+    public WechatPrePayOrder generateURLPrePayOrder(int mount, String tittle, String productId, String outTradeNo, String attach, String notifyUrl, String ip) throws WechatServiceException {
+        WechatOrder wechatOrder = new WechatOrder();
+        wechatOrder.setKey(WechatPaymentConfig.KEY);
+        wechatOrder.setAppid(WechatPaymentConfig.APPID);
+        wechatOrder.setDeviceInfo(WechatOrder.DEVICE_INFO_WEB);
+        wechatOrder.setMchId(WechatPaymentConfig.MCH_ID);
+        wechatOrder.setTradeType(WechatOrder.TRADE_TYPE_NATIVE);
+        wechatOrder.setBody(tittle);
+        wechatOrder.setNonceStr(UUID.randomUUID().toString().replaceAll("-", ""));
+        wechatOrder.setNotifyUrl(notifyUrl);
+        wechatOrder.setOutTradeNo(outTradeNo);
+        wechatOrder.setSpbillCreateIp(ip);
+        wechatOrder.setProductId(productId);
+        wechatOrder.setTotalFee(mount);
+        wechatOrder.setAttach(attach);
+
+
+        logger.debug("wechat 下单参数:" + wechatOrder.toString());
+
+        String xmlParams = null;
+        xmlParams = getOrderParamsXMLString(wechatOrder, xmlParams);
+
+        WechatPaymentHttpClient client = new WechatPaymentHttpClient(WechatPaymentHttpClient.ORDER_ADDRESS);
+        Response response = client.post(WechatPaymentHttpClient.CREATE_ORDER_URI, xmlParams);
+
+        if (!response.isSuccess()) {
+            logger.debug("WechatPaymentServiceImpl.generateOpenPrePayOrder :" + response.getString());
+            throw new WechatServiceException("创建生成预支付订单失败");
+        }
+
+        WechatPrePayOrder wechatPrePayOrder = null;
+        wechatPrePayOrder = getWechatPrePayOrder(response.getString());
+
+        if (wechatPrePayOrder != null && WechatPrePayOrder.RETURN_CODE_FAIL.equalsIgnoreCase(wechatPrePayOrder.getReturnCode())) {
+            throw new WebServiceException("微信接口调用失败:原因" + wechatPrePayOrder.getReturnMsg());
+        }
+
+        return wechatPrePayOrder;
+    }
+
 
     @Override
     public WechatPayResult parseNotifyXMLData(String xmlData) throws WechatServiceException {

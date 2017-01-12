@@ -29,7 +29,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="wechat-payment" />
+    <orderEntry type="library" name="Maven: com.joker.module.payment:wechat-payment:1.0.9" level="project" />
     <orderEntry type="module" module-name="QRCode" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />

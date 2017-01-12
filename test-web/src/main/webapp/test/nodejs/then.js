@@ -14,5 +14,8 @@ p1.then(function(value) {
 }, function(reason) {
     console.log(reason); // Error!
 }).catch(function(e){
-    console.log("Exception")
+    console.log("Exception");
 });
+
+
+

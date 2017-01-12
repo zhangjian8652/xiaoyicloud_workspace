@@ -7,9 +7,7 @@
           <element id="module-output" name="test-web" />
         </element>
         <element id="directory" name="lib">
-          <element id="archive" name="wechat-payment-1.0.9.jar">
-            <element id="module-output" name="wechat-payment" />
-          </element>
+          <element id="library" level="project" name="Maven: com.joker.module.payment:wechat-payment:1.0.9" />
           <element id="archive" name="QRCode-1.0.2.jar">
             <element id="module-output" name="QRCode" />
           </element>

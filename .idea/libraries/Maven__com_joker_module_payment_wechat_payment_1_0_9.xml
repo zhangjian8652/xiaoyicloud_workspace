@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.joker.module.payment:wechat-payment:1.0.9">
+    <CLASSES>
+      <root url="jar://G:/maven/lib/com/joker/module/payment/wechat-payment/1.0.9/wechat-payment-1.0.9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://G:/maven/lib/com/joker/module/payment/wechat-payment/1.0.9/wechat-payment-1.0.9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://G:/maven/lib/com/joker/module/payment/wechat-payment/1.0.9/wechat-payment-1.0.9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
