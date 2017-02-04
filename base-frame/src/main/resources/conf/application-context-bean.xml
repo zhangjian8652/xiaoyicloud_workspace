@@ -38,6 +38,7 @@
                      <!-- 配置通知,相当于@Before、@After、@AfterReturn、@Around、@AfterThrowing -->
                      <aop:before pointcut-ref="serviceLoggerAspect" method="before"/>
                      <aop:after pointcut-ref="serviceLoggerAspect" method="after"/>
+                     <aop:around method="around" pointcut-ref="serviceLoggerAspect"/>
                      <aop:after-returning pointcut-ref="serviceLoggerAspect" method="afterReturn"/>
                      <aop:after-throwing pointcut-ref="serviceLoggerAspect" method="afterThrow" throwing="ex"/>
               </aop:aspect>
