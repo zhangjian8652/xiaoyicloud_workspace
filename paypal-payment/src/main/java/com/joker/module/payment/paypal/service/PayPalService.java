@@ -8,4 +8,5 @@ import com.joker.module.payment.paypal.domain.PaypalOrder;
 public interface PayPalService {
     public String createPayment(PaypalOrder paypaOder, String returnUrl);
     public boolean excutePayment(PaypalOrder topUpPayment);
+    public String createCreditPayment(PaypalOrder paypalOrder, String returnUrl);
 }

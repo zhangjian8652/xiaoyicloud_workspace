@@ -17,7 +17,15 @@ public class PaypalServiceImpl implements PayPalService {
 
     @Override
     public String createPayment(PaypalOrder paypalOrder, String returnUrl) {
+        return basePayment(paypalOrder, returnUrl,PayPalConfig.PAYPAL_PAYMENT_METHOD);
+    }
 
+    @Override
+    public String createCreditPayment(PaypalOrder paypalOrder, String returnUrl) {
+        return basePayment(paypalOrder, returnUrl,PayPalConfig.CREDICARD_PAYMENT_METHOD);
+    }
+
+    private String basePayment(PaypalOrder paypalOrder, String returnUrl,String method) {
         Item item = PaypalFactory.createItem(paypalOrder.getName(), paypalOrder.getAmount(), "1", paypalOrder.getCurrency());
 
         Details details = PaypalFactory.createDetails("0", paypalOrder.getAmount(), "0");
@@ -32,7 +40,7 @@ public class PaypalServiceImpl implements PayPalService {
         List<Transaction> transactions = new ArrayList<Transaction>();
         transactions.add(transaction);
 
-        Payer payer = PaypalFactory.createPayer(PayPalConfig.PAYPAL_PAYMENT_METHOD);
+        Payer payer = PaypalFactory.createPayer(method);
 
         RedirectUrls redirectUrls = PaypalFactory.createRedirectUrls(returnUrl, returnUrl);
 
