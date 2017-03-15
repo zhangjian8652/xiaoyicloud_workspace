@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sword-api-upm:war">
+    <output-path>$PROJECT_DIR$/sword-api-upm/target</output-path>
+    <root id="archive" name="sword-api-upm-1.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="sword-api-upm:war exploded" />
+    </root>
+  </artifact>
+</component>
