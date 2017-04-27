@@ -8,6 +8,7 @@ public class WechatOrder {
 
     public static String TRADE_TYPE_JSAPI = "JSAPI";
     public static String TRADE_TYPE_NATIVE = "NATIVE";
+    public static String TRADE_TYPE_MWEB = "MWEB";
     public static String DEVICE_INFO_WEB = "WEB";
 
 

@@ -43,12 +43,12 @@ public class HttpRequest {
 
     public static String TYPE_HTTPS = "https";
 
-    protected static String CONTENT_TYPE_JSON = "application/json";
-    protected static String CONTENT_TYPE_XML = "application/xml";
+    protected static String CONTENT_TYPE_JSON = "application/json;charset=utf-8";
+    protected static String CONTENT_TYPE_XML = "application/xml;charset=utf-8";
     protected static String CONTENT_TYPE_KEY = "content-type";
 
-    protected static String ACCEPT_XML = "application/xml";
-    protected static String ACCEPT_JSON = "application/json";
+    protected static String ACCEPT_XML = "application/xml;charset=utf-8";
+    protected static String ACCEPT_JSON = "application/json;charset=utf-8";
     protected static String ACCEPT_KEY = "accept";
 
 
@@ -250,8 +250,13 @@ public class HttpRequest {
 
             this.httpClient.executeMethod(httpMethod);
             response = new Response(httpMethod.getStatusCode(), httpMethod.getResponseBodyAsString(), httpMethod.getResponseBodyAsStream(), httpMethod.getResponseBody(), httpMethod.getResponseHeaders());
-            String resultString = httpMethod.getResponseBodyAsString();
+            String resultString = new String(httpMethod.getResponseBodyAsString().getBytes("ISO8859-1"),"utf-8");
             Integer resultStatus = httpMethod.getStatusCode();
+
+            Header[] headers = httpMethod.getResponseHeaders();
+            for (int i = 0; i < headers.length; i++) {
+                logger.info("header : " + headers[i].getName() + "=>>" + headers[i].getValue());
+            }
 
             //给response赋值
             response.setString(resultString);

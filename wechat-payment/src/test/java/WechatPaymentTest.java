@@ -1,8 +1,12 @@
 import com.joker.module.payment.wechat.domain.WechatPayResult;
+import com.joker.module.payment.wechat.domain.WechatPrePayOrder;
+import com.joker.module.payment.wechat.exception.WechatServiceException;
 import com.joker.module.payment.wechat.service.WechatPaymentService;
 import com.joker.module.payment.wechat.service.impl.WechatPaymentServiceImpl;
 import com.joker.module.payment.wechat.util.WechatPaymentUtil;
 import org.junit.Test;
+
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by zhangjian on 2016/8/19.
@@ -44,5 +48,16 @@ public class WechatPaymentTest {
         System.out.println(result);
     }
 
+    @Test
+    public void testCommonOrder()   {
+
+        try {
+            WechatPrePayOrder wechatPrePayOrder = wechatPaymentService.generateURLPrePayOrder(1, "test", "test product", "20170427133425", "{\"a\":\"b\"}", "http://wechat/testopen/order", "127.0.0.1");
+        } catch (WechatServiceException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
 }

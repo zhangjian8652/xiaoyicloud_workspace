@@ -71,6 +71,20 @@ public interface WechatPaymentService {
      */
     WechatPrePayOrder generateURLPrePayOrder(int mount, String tittle,String productId, String outTradeNo,String attach,String notifyUrl, String ip) throws WechatServiceException;
 
+    /**
+     *
+     * 生成预支付订单 链接形式，用于二维码支付
+     * @param mount 总金额，单位为分 列入1元 等于 100分
+     * @param tittle 订单的描述信息，比如商品购买或者商品充值
+     * @param productId 此id为二维码中包含的商品ID，商户自行定义。
+     * @param outTradeNo 订单号：20160808174447（32个字符内，可包含字母）
+     * @param attach 自定义字段传递
+     * @param notifyUrl 交易成功异步通知接口
+     * @param ip 微信客户端ip
+     * @return 返回创建预支付订单结果
+     */
+    WechatPrePayOrder generateMWEBPrePayOrder(int mount, String tittle,String productId, String outTradeNo,String attach,String notifyUrl, String ip) throws WechatServiceException;
+
 
     /**
      *

@@ -2,6 +2,9 @@ package string;
 
 import org.junit.Test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by zhangjian on 2016/10/10.
  */
@@ -148,5 +151,24 @@ public class StringTest {
     }
 
 
+
+    @Test
+    public void testEndsWith(){
+        System.out.println("".endsWith("p_reg"));
+    }
+
+
+
+    @Test
+    public void testEqualsObjectToString(){
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("a", "hhhhh,aaaa!");
+
+
+        System.out.println("hhhhh,aaaa!".equals(map.get("a")));
+
+
+    }
 
 }
