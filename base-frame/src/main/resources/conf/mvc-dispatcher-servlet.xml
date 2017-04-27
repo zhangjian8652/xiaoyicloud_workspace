@@ -95,5 +95,24 @@
     <bean id="defaultInterceptor" class="com.joker.modules.web.interceptor.DefaultInterceptor" />
 
 
-    <import resource="management/spring-static.xml"/>
+    <!-- 静态页面请求映射  开始-->
+    <!-- 定位静态文件视图 -->
+    <!-- Forwards requests to the "/" resource to the "welcome" view -->
+
+    <!--公共模块 开始-->
+    <mvc:view-controller path="/" view-name="/web/views/index"/>
+    <mvc:view-controller path="/404" view-name="/web/views/404"/>
+    <mvc:view-controller path="/500" view-name="/web/views/500"/>
+    <!--公共模块 结束-->
+
+    <!-- 后台系统模块 开始 -->
+    <mvc:redirect-view-controller path="/management" redirect-url="/admin/dashboard"/>
+    <mvc:view-controller path="/admin/dashboard" view-name="/management/views/dashboard"/>
+    <!-- 后台系统模块 结束 -->
+
+
+    <!-- 处理静态文件js,css,html,jpg,gif... -->
+    <mvc:resources location="/resources/*" mapping="/resources/**" />
+    <mvc:resources location="/plugins/*" mapping="/plugins/**" />
+    <!-- 静态页面请求映射  结束-->
 </beans>
