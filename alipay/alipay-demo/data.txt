@@ -1,0 +1,11 @@
+total_amount=0.01
+timestamp=2017-04-27 16:14:03
+sign_type=RSA2
+auth_app_id=2016080200148659
+charset=UTF-8
+seller_id=2088102169594283
+method=alipay.trade.wap.pay.return
+app_id=2016080200148659
+out_trade_no=2017427161324925
+trade_no=2017042721001004420200357831
+version=1.0
