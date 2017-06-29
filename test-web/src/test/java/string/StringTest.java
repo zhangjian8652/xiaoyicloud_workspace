@@ -134,7 +134,7 @@ public class StringTest {
 
 
     @Test
-    public void test2(){
+    public void test2() {
 
         String a = "aaaaaa";
 
@@ -151,16 +151,14 @@ public class StringTest {
     }
 
 
-
     @Test
-    public void testEndsWith(){
+    public void testEndsWith() {
         System.out.println("".endsWith("p_reg"));
     }
 
 
-
     @Test
-    public void testEqualsObjectToString(){
+    public void testEqualsObjectToString() {
         Map<String, Object> map = new HashMap<>();
 
         map.put("a", "hhhhh,aaaa!");
@@ -170,5 +168,23 @@ public class StringTest {
 
 
     }
+
+
+    @Test
+    public void testStringConcat() {
+        String s1 = "ab";
+
+        String s2 = "a" + "b";
+
+        String s3 = "a";
+
+        String s4 = "b";
+
+        String s5 = s3 + s4;
+
+        System.out.println(s5 == s2);
+        System.out.println(s1 == s2);
+    }
+
 
 }
