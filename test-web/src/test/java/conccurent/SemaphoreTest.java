@@ -54,4 +54,10 @@ public class SemaphoreTest {
         Thread.sleep(10000);
         semaphore.release();
     }
+
+    public static void main(String[] args) {
+        for (;;) {
+            System.out.println("aaa");
+        }
+    }
 }

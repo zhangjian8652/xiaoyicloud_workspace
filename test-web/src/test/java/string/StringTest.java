@@ -2,6 +2,9 @@ package string;
 
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -186,5 +189,36 @@ public class StringTest {
         System.out.println(s1 == s2);
     }
 
+
+
+
+    @Test
+    public void testStringSplit() throws IOException {
+
+        InputStream is = StringTest.class.getClassLoader().getResourceAsStream("data.txt");
+
+        byte[] buf = new byte[1024];
+        int len = 0;
+
+        String data = "";
+
+
+        while ((len = is.read(buf)) >0){
+            data += new String(buf, 0, len);
+        }
+
+        String[] sts = data.split(System.getProperty("line.separator"));
+
+        for (int i = 0; i < sts.length; i++) {
+            if (null != sts[i] && !"".equalsIgnoreCase(sts[i])) {
+                System.out.println(sts[i]);
+            }else {
+                System.out.println("==================");
+            }
+
+        }
+
+
+    }
 
 }

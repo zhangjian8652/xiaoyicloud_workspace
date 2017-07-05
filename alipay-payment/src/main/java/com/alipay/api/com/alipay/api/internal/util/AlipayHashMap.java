@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
-import com.alipay.api.AlipayConstants;
+import com.alipay.api.com.alipay.api.*;
 
 /**
  * 纯字符串字典结构。
